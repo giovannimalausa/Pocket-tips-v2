@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pocket-tips (Mobile)</title>
+    <link rel="stylesheet" href="style-mobile.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.0/lottie.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body id="scroll-wrapper">
+    <!-- Barra in alto -->
+    <div class="barraInAlto">
+        <a href="index.html">
+            <div class="animatedLogoContainer" id="animatedLogoContainer"></div>
+        </a>
+    </div>
+
+    <!-- Inizio Wrapper carte -->
+    <div class="wrapper" id="wrapper">
+        
+        <!-- Mazzo -->
+        <div class="mazzo1">
+
+            <!-- GREEN CARD -->
+            <div class="single-card-wrapper green-single-card-wrapper">
+                <p class="green-cat-title cat-title cat-title-hidden">RISPARMIA</p>
+                <div class="card green-card cover main-cover">
+                    <div class="green-vector vector-wrapper">
+                        <img src="res/green-vector.svg" alt="Green vector" class="green-vector vector">
+                    </div>
+                </div>
+            </div>
+
+            <!-- RED CARD -->
+            <div class="single-card-wrapper red-single-card-wrapper">
+                <p class="red-cat-title cat-title cat-title-hidden">CREA</p>
+                <div class="card red-card cover main-cover">
+                    <div class="red-vector vector-wrapper">
+                        <img src="res/red-vector.svg" alt="Red vector" class="red-vector vector">
+                    </div>
+                </div>
+            </div>
+
+            <!-- YELLOW CARD -->
+            <div class="single-card-wrapper yellow-single-card-wrapper">
+                <p class="yellow-cat-title cat-title cat-title-hidden">ASSAPORA</p>
+                <div class="card yellow-card cover main-cover">
+                    <div class="yellow-vector vector-wrapper">
+                        <img src="res/yellow-vector.svg" alt="Yellow vector" class="yellow-vector vector">
+                    </div>
+                </div>
+            </div>
+
+            <!-- PINK CARD -->
+            <div class="single-card-wrapper pink-single-card-wrapper">
+                <p class="pink-cat-title cat-title cat-title-hidden">ESPLORA</p>
+                <div class="card pink-card cover main-cover">
+                    <div class="pink-vector vector-wrapper">
+                        <img src="res/pink-vector.svg" alt="Pink vector" class="pink-vector vector">
+                    </div>
+                </div>
+            </div> 
+
+            <!-- BLUE CARD -->
+            <div class="single-card-wrapper blue-single-card-wrapper">
+                <p class="blue-cat-title cat-title cat-title-hidden">SCOPRI</p>
+                <div class="card blue-card cover main-cover">
+                    <div class="blue-vector vector-wrapper">
+                        <img src="res/blue-vector.svg" alt="Blue vector" class="blue-vector vector">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="scroll-content"></div>
+    </div>
+    <!-- Fine Wrapper carte -->
+
+    <!-- Inizio Wrapper nomi categorie -->
+    <div class="catNamesWrapper" id="catNamesWrapper">
+        <div class="catNameContainer">
+            <h1 class="catName green-CatName">Risparmia</h1>
+        </div>
+        <div class="catNameContainer">
+            <h1 class="catName red-CatName">Crea</h1>
+        </div>
+        <div class="catNameContainer">
+            <h1 class="catName yellow-CatName">Assapora</h1>
+        </div>
+        <div class="catNameContainer">
+            <h1 class="catName pink-CatName">Esplora</h1>
+        </div>
+        <div class="catNameContainer">
+            <h1 class="catName blue-CatName">Scopri</h1>
+        </div>
+    </div>
+
+    <!-- GREENSOCK -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/Flip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/Observer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/EaselPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/MotionPathPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/PixiPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/CustomEase.min.js"></script>
+    
+    <script src="gs-loading-mobile.js"></script> 
+
+</body>
+</html>

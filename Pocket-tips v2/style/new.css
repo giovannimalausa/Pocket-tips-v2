@@ -1,0 +1,145 @@
+:root {
+    /* Colors */
+    --dark-background: #1F2023;
+    --light-background: #FFFFFF;
+    /* --light-background: #F5EDE0; */
+
+    --yellow-primary: #F2BE58;
+    --yellow-secondary: #FFFAEA;
+    --yellow-tertiary: #fffaea8b;
+
+    --green-primary: #72C0A2;
+    --green-secondary: #F6FFFC;
+
+    --red-primary: #ED6D44;
+    --red-secondary: #FDF4EF;
+
+    --pink-primary: #F3A0B9;
+    --pink-secondary: #FFF3F8;
+
+    --blue-primary: #4E7BBE;
+    --blue-secondary: #F3F7FF;
+
+    /* Shadows */
+    --shadow-1: 0px 4px 5px rgba(0, 0, 0, 0.25);
+
+    margin: 0;
+    padding: 0;
+
+    /* Card variables */
+    --card-border-radius: 40px;
+}
+
+@font-face {
+    font-family: 'PP Fragment Variable';
+    src: url(../font/PPFragment-Variable.ttf);
+    font-weight: 100 900;
+}
+
+html {
+    scroll-behavior: smooth;
+    overscroll-behavior: none; /* Disable pull-to-refresh */
+}
+
+body > * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -ms-overflow-style: none;  /* Hide scroll bar in IE and Edge */
+    scrollbar-width: none;  /* Hide scroll bar in Firefox */
+}
+
+body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
+    display: none;
+}
+
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    margin: 0;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-background);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.single-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 250px; /* former 180px */
+    height: 375px;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-1);
+    overflow: hidden;
+    position: relative;
+    margin: 24px;
+    z-index: 2;
+    transition: scale 0.3s cubic-bezier(.3, 1.77, .68, .93);
+}
+
+.green-card {
+    background-color: var(--green-primary);
+}
+
+.red-card {
+    background-color: var(--red-primary);
+}
+
+.yellow-card {
+    background-color: var(--yellow-primary);
+}
+
+.pink-card {
+    background-color: var(--pink-primary);
+}
+
+.blue-card {
+    background-color: var(--blue-primary);
+}
+
+.cat-title {
+    width: 100%;
+    font-family: 'PP Fragment Variable';
+    font-size: 24px;
+    font-weight: 100;
+    color: var(--light-background);
+    margin: 0;
+    margin-bottom: 50px;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.prev, .next {
+    cursor: pointer;
+}
+
+.current .card {
+    scale: 1.1;
+}

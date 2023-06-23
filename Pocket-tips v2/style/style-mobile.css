@@ -1,0 +1,288 @@
+:root {
+    /* Colors */
+    --dark-background: #1F2023;
+    --light-background: #FFFFFF;
+    /* --light-background: #F5EDE0; */
+
+    --yellow-primary: #F2BE58;
+    --yellow-secondary: #FFFAEA;
+    --yellow-tertiary: #fffaea8b;
+
+    --green-primary: #72C0A2;
+    --green-secondary: #F6FFFC;
+
+    --red-primary: #ED6D44;
+    --red-secondary: #FDF4EF;
+
+    --pink-primary: #F3A0B9;
+    --pink-secondary: #FFF3F8;
+
+    --blue-primary: #4E7BBE;
+    --blue-secondary: #F3F7FF;
+
+    /* Shadows */
+    --shadow-1: 0px 4px 5px rgba(0, 0, 0, 0.25);
+
+    margin: 0;
+    padding: 0;
+
+    /* Card variables */
+    --card-border-radius: 25px;
+}
+
+@font-face {
+    font-family: 'PP Fragment Variable';
+    src: url(font/PPFragment-Variable.ttf);
+    font-weight: 100 900;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body > * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    overflow-x: hidden;
+    height: 100dvh;
+    -ms-overflow-style: none;  /* Hide scroll bar in IE and Edge */
+    scrollbar-width: none;  /* Hide scroll bar in Firefox */
+}
+
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    margin: 0;
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-background);
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.wrapper > * {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[class^="mazzo"] > * {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.single-card-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 195px; /* former 180px */
+    height: 290px;
+    pointer-events: all;
+}
+
+.card {
+    width: 195px; /* former 180px */
+    height: 290px;
+    max-height: 450px;
+    position: absolute;
+    border-radius: var(--card-border-radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow-1);
+    overflow: hidden;
+    cursor: none;
+}
+
+.card .vector {
+    display: flex;
+    width: 92px;
+    height: 92px;
+    align-items: center;
+    justify-content: center;
+}
+
+.green-card.cover {
+    background-color: var(--green-primary);
+}
+
+.red-card.cover {
+    background-color: var(--red-primary);
+}
+
+.yellow-card.cover {
+    background-color: var(--yellow-primary);
+}
+
+.pink-card.cover {
+    background-color: var(--pink-primary);
+}
+
+.blue-card.cover {
+    background-color: var(--blue-primary);
+}
+
+.catNamesWrapper {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 500vw;
+    overflow: hidden;
+    cursor: none;
+    top: 10vh;
+    left: 0vw;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.catNameContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.catName {
+    font-family: 'PP Fragment Variable';
+    font-size: 32px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.face-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none; /* will become flex */
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    padding: 8px 8px;
+    box-sizing: border-box;
+}
+
+.face-wrapper h1 {
+    font-family: 'PP Fragment Variable';
+    font-variation-settings: 'wght' 550, 'SRFF' 80, 'slnt' 0;
+    font-size: 24px;
+    color: black;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.face-wrapper h2 {
+    font-family: 'PP Fragment Variable';
+    font-variation-settings: 'wght' 350, 'SRFF' 0, 'slnt' 0;
+    font-size: 15px;
+    color: black;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.show {
+    display: flex;
+}
+
+.title-icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.small-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.mazzo6 .blue-single-card-wrapper { /* adjusting z-index of last card to avoid overlap with first card */
+    z-index: -1;
+}
+
+.green-CatName {
+    color: var(--green-primary);
+}
+
+.red-CatName {
+    color: var(--red-primary);
+}
+
+.yellow-CatName {
+    color: var(--yellow-primary);
+}
+
+.pink-CatName {
+    color: var(--pink-primary);
+}
+
+.blue-CatName {
+    color: var(--blue-primary);
+}
+
+.green-deck > .catNamesWrapper {
+    left: 0vw;
+}
+
+.red-deck > .catNamesWrapper {
+    left: -100vw;
+}
+
+.yellow-deck > .catNamesWrapper {
+    left: -200vw;
+}
+
+.pink-deck > .catNamesWrapper {
+    left: -300vw;
+}
+
+.blue-deck > .catNamesWrapper {
+    left: -400vw;
+}
+
+[class^="mazzo"] > :nth-child(1) {
+    z-index: 5;
+}
+
+[class^="mazzo"] > :nth-child(2) {
+    z-index: 4;
+}
+
+[class^="mazzo"] > :nth-child(3) {
+    z-index: 3;
+}
+
+[class^="mazzo"] > :nth-child(4) {
+    z-index: 2;
+}
+
+[class^="mazzo"] > :nth-child(5) {
+    z-index: 1;
+}
+
