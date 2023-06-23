@@ -117,6 +117,36 @@ wrapper.addEventListener("click", (event) => {
     }
 });
 
+// Collecting cards
+function collectCards() {
+    
+}
+
+// QUA CREARE UN ARRAY BELLO, con posizioni giuste
+// Array = [{2, 1, 0, -1, 2}, {}, {}, {}, {}}]
+
+let greenFactor = 2; // Factor for moving cards: how many positions to move, and direction (- left / + right)
+let redFactor = 1; // Factor for moving cards: how many positions to move, and direction (- left / + right)
+let yellowFactor = 0; // Factor for moving cards: how many positions to move, and direction (- left / + right)
+let pinkFactor = -1; // Factor for moving cards: how many positions to move, and direction (- left / + right)
+let blueFactor = -2; // Factor for moving cards: how many positions to move, and direction (- left / + right)
+
+console.log("Collecting cards");
+    // Creating timeline
+    let collectTl = gsap.timeline({
+        defaults: {
+            duration: .5,
+            ease: "back",
+        }
+    });
+    // Adding tweens to timeline
+    collectTl.add('start');
+    collectTl.to(greenCard, {x: greenCard.width()*greenFactor}, 'start');
+    collectTl.to(redCard, {x: redCard.width()*redFactor}, 'start');
+    collectTl.to(yellowCard, {x: yellowCard.width()*yellowFactor}, 'start');
+    collectTl.to(pinkCard, {x: pinkCard.width()*pinkFactor}, 'start');
+    collectTl.to(blueCard, {x: blueCard.width()*blueFactor}, 'start');
+    collectTl.add('end');
 
 
 //   #     #                                              #######                                                   
