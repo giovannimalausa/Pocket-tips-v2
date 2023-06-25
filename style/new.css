@@ -326,5 +326,10 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
         opacity: 0.2;
     }
 
+    .tippy-box[data-theme~="tomato"] {
+        background-color: tomato;
+        font-family: 'PP Fragment Variable';
+        font-size: 18px;
+    }
 
 }

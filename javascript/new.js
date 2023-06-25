@@ -543,10 +543,17 @@ if (/Mobi/.test(navigator.userAgent)) {
 
         function clickedCardToCenter(clickedCard) {
             gsap.to(clickedCard, {
-                duration: .75,
                 x: 0,
                 y: 0,
                 rotate: 0,
+                duration: .75,
+                ease: "back",
+            });
+
+            gsap.to($(clickedCard).find(".card"), {
+                scale: 1.25,
+                duration: .75,
+                ease: "back",
             });
 
             gsap.to($(clickedCard).find(".cat-title"), {
@@ -807,7 +814,20 @@ if (/Mobi/.test(navigator.userAgent)) {
             }
         });
 
+        // Custom cursor using Tippy.js
+        // Docs here: https://atomiks.github.io/tippyjs/v6/faq/
+        tippy('.clickable', {
+            content: "Scopri",
+            theme: "tomato",
+            followCursor: true,
+            hideOnClick: false,
+            delay: 0,
+            duration: [200, 150],
+            arrow: false,
+            placement: 'bottom',
+        });
 
+        
 
     }
 
