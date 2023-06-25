@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pocket-tips</title>
+    <title>Pocket-tips | Home</title>
     <link rel="stylesheet" href="style/new.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.0/lottie.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -23,17 +23,21 @@
         
         <!-- GREEN CARD -->
         <div class="single-card-wrapper green-single-card-wrapper">
-            <h1 class="green-cat-title cat-title cat-title-hidden">RISPARMIA</h1>
-            <div class="card green-card cover main-cover">
-                <div class="green-vector vector-wrapper">
-                    <img src="res/green-vector.svg" alt="Green vector" class="green-vector vector">
+            <div class="cat-title-wrapper">
+                <h1 class="green-cat-title cat-title cat-title-hidden">RISPARMIA</h1>
+            </div>
+                <div class="card green-card cover main-cover">
+                    <div class="green-vector vector-wrapper">
+                        <img src="res/green-vector.svg" alt="Green vector" class="green-vector vector">
                 </div>
             </div>
         </div>
 
         <!-- RED CARD -->
         <div class="single-card-wrapper red-single-card-wrapper">
-            <h1 class="red-cat-title cat-title cat-title-hidden">CREA</h1>
+            <div class="cat-title-wrapper">
+                <h1 class="red-cat-title cat-title cat-title-hidden">CREA</h1>
+            </div>
             <div class="card red-card cover main-cover">
                 <div class="red-vector vector-wrapper">
                     <img src="res/red-vector.svg" alt="Red vector" class="red-vector vector">
@@ -43,7 +47,9 @@
 
         <!-- YELLOW CARD -->
         <div class="single-card-wrapper yellow-single-card-wrapper">
-            <h1 class="yellow-cat-title cat-title cat-title-hidden">ASSAPORA</h1>
+            <div class="cat-title-wrapper">
+                <h1 class="yellow-cat-title cat-title cat-title-hidden">ASSAPORA</h1>
+            </div>
             <div class="card yellow-card cover main-cover">
                 <div class="yellow-vector vector-wrapper">
                     <img src="res/yellow-vector.svg" alt="Yellow vector" class="yellow-vector vector">
@@ -52,8 +58,10 @@
         </div>
 
         <!-- PINK CARD -->
-        <div class="single-card-wrapper pink-single-card-wrapper" id="next">
-            <h1 class="pink-cat-title cat-title cat-title-hidden">ESPLORA</h1>
+        <div class="single-card-wrapper pink-single-card-wrapper">
+            <div class="cat-title-wrapper">
+                <h1 class="pink-cat-title cat-title cat-title-hidden">ESPLORA</h1>
+            </div>
             <div class="card pink-card cover main-cover">
                 <div class="pink-vector vector-wrapper">
                     <img src="res/pink-vector.svg" alt="Pink vector" class="pink-vector vector">
@@ -63,7 +71,9 @@
 
         <!-- BLUE CARD -->
         <div class="single-card-wrapper blue-single-card-wrapper">
-            <h1 class="blue-cat-title cat-title cat-title-hidden">SCOPRI</h1>
+            <div class="cat-title-wrapper">
+                <h1 class="blue-cat-title cat-title cat-title-hidden">SCOPRI</h1>
+            </div>
             <div class="card blue-card cover main-cover">
                 <div class="blue-vector vector-wrapper">
                     <img src="res/blue-vector.svg" alt="Blue vector" class="blue-vector vector">
@@ -90,15 +100,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/CustomEase.min.js"></script>
     
     <script src="javascript/new.js"></script> 
-
-    <!--
-    CustomBounce.min.js, and CustomWiggle.min.js are Club GreenSock perks which are not available on a CDN. Download them from your GreenSock account and include them locally like this:
-
-    <script src="/[YOUR_DIRECTORY]/CustomBounce.min.js"></script>
-    <script src="/[YOUR_DIRECTORY]/CustomWiggle.min.js"></script>
-
-    Sign up at https://greensock.com/club or try them for free on CodePen or CodeSandbox
-    -->
 
 </body>
 </html>
