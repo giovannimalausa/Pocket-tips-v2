@@ -141,8 +141,10 @@ if (/Mobi/.test(navigator.userAgent)) {
     let wrapper = document.querySelector(".wrapper");
     wrapper.addEventListener("click", (event) => {
         if (event.target.classList.contains("next") || event.target.closest(".next")) {
+            console.log("Next card clicked");
             nextCat();
         } else if (event.target.classList.contains("prev") || event.target.closest(".prev")) {
+            console.log("Prev card clicked");
             prevCat();
         } else if (event.target.classList.contains("current") || event.target.closest(".current")) {
             console.log("Current card clicked");
