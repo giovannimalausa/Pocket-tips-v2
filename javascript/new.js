@@ -20,6 +20,25 @@ gsap.registerPlugin(Observer);
 let overable = false; // Boolean to control wether pointer events are allowed or not
 console.log("overable is", overable);
 
+// Creating timeline
+let collectTl = gsap.timeline({
+    defaults: {
+        duration: .75,
+        ease: "power2.inOut",
+    }
+});
+
+// Array that contains the factors for the translation in the collecting animation
+const factor = [
+    {greenFactor: 2, redFactor: 1, yellowFactor: 0, pinkFactor: -1, blueFactor: -2}, // yellow is current
+    {greenFactor: -2, redFactor: 2, yellowFactor: 1, pinkFactor: 0, blueFactor: -1}, // pink is current
+    {greenFactor: -1, redFactor: -2, yellowFactor: 2, pinkFactor: 1, blueFactor: 0}, // blue is current
+    {greenFactor: 0, redFactor: -1, yellowFactor: -2, pinkFactor: 2, blueFactor: 1}, // green is current
+    {greenFactor: 1, redFactor: 0, yellowFactor: -1, pinkFactor: -2, blueFactor: 2}, // red is current
+];
+
+deck_factors = [3, 2, 1, 0, -1, -2, -3];
+
 // Checking if mobile or desktop
 if (/Mobi/.test(navigator.userAgent)) {
     console.log("Mobile");
@@ -138,8 +157,7 @@ if (/Mobi/.test(navigator.userAgent)) {
     })
 
     // Add event listeners to clicks
-    let wrapper = document.querySelector(".wrapper");
-    wrapper.addEventListener("click", (event) => {
+    $('.wrapper').on('click', (event) => {
         if (event.target.classList.contains("next") || event.target.closest(".next")) {
             console.log("Next card clicked");
             nextCat();
@@ -151,18 +169,12 @@ if (/Mobi/.test(navigator.userAgent)) {
             if (htmlTitle.includes("Home") === true) { // IF HTML TITLE of PAGE is HOME
                 collectCards();
             }
+        } else {
+            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         }
     });
 
     // Collecting cards
-
-    // Creating timeline
-    let collectTl = gsap.timeline({
-        defaults: {
-            duration: .75,
-            ease: "power2.inOut",
-        }
-    });
 
     // Funzione
     function collectCards() {
@@ -184,15 +196,6 @@ if (/Mobi/.test(navigator.userAgent)) {
         console.log("collectTl played.");
         // collectTl.onComplete(navigateToDeckOnMobile(i));
     }
-
-    // Array that contains the factors for the translation in the collecting animation
-    const factor = [
-        {greenFactor: 2, redFactor: 1, yellowFactor: 0, pinkFactor: -1, blueFactor: -2}, // yellow is current
-        {greenFactor: -2, redFactor: 2, yellowFactor: 1, pinkFactor: 0, blueFactor: -1}, // pink is current
-        {greenFactor: -1, redFactor: -2, yellowFactor: 2, pinkFactor: 1, blueFactor: 0}, // blue is current
-        {greenFactor: 0, redFactor: -1, yellowFactor: -2, pinkFactor: 2, blueFactor: 1}, // green is current
-        {greenFactor: 1, redFactor: 0, yellowFactor: -1, pinkFactor: -2, blueFactor: 2}, // red is current
-    ]
 
     function navigateToDeckOnMobile(card_i) {
         console.log("Running navigateToDeckOnMobile()...");
@@ -235,7 +238,6 @@ if (/Mobi/.test(navigator.userAgent)) {
             deck.push(this);
         });
 
-        deck_factors = [3, 2, 1, 0, -1, -2, -3];
         console.log(deck);
 
         collectTl.clear();
