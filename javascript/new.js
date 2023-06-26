@@ -644,7 +644,7 @@ if (/Mobi/.test(navigator.userAgent)) {
         $(deck[2]).addClass('next');
         $(deck[5]).addClass('prev');
 
-        console.log("Deck created ", deck);
+        console.log("Deck created, with ", deck.length, " cards");
 
         // Posizioni predefinite, senza unità di misura
         let position_0_x_value = 0; 
