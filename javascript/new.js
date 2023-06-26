@@ -227,11 +227,17 @@ if (/Mobi/.test(navigator.userAgent)) {
         // Adding tweens to timeline
         collectCards_desktop_TL.add('start');
         collectCards_desktop_TL.fromTo(pinkCard, {x: -500, y: -205, rotate: -15}, {x: 0, y: 0, rotate: pinkAngle}, 'start');
-        collectCards_desktop_TL.fromTo(redCard, {x: 600, y: 205, rotate: 30}, {x: 0, y: 0, rotate: redAngle}, 'start');
-        collectCards_desktop_TL.fromTo(blueCard, {x: 20, y: -100, rotate: -20}, {x: 0, y: 0, rotate: blueAngle}, 'start');
+        collectCards_desktop_TL.fromTo(redCard, {x: 600, y: 205, rotate: 35}, {x: 0, y: 0, rotate: redAngle}, 'start');
+        collectCards_desktop_TL.fromTo(blueCard, {x: 420, y: -100, rotate: 20}, {x: 0, y: 0, rotate: blueAngle}, 'start');
         collectCards_desktop_TL.fromTo(yellowCard, {x: -500, y: 300, rotate: -45}, {x: 0, y: 0, rotate: yellowAngle}, 'start');
-        collectCards_desktop_TL.fromTo(greenCard, {x: -50, y: -295, rotate: -45}, {x: 0, y: 0, rotate: greenAngle}, 'start');
+        collectCards_desktop_TL.fromTo(greenCard, {x: -50, y: -395, rotate: -45}, {x: 0, y: 0, rotate: greenAngle}, 'start');
+        collectCards_desktop_TL.add('start-navbar');
+        collectCards_desktop_TL.to($('.motto-container'), {opacity: 0, duration: 0.2}, 'start-navbar-=0.5');
+        collectCards_desktop_TL.to($('.barra-in-alto-espansa'), {top: -300, duration: 0.5}, 'start-navbar-=0.5');
+        collectCards_desktop_TL.to($('.motto-container'), {display: 'none', duration: 0});
         collectCards_desktop_TL.add('center', 1.25);
+        collectCards_desktop_TL.to($('.barra-in-alto-espansa'), {opacity: 1, top: 0, height: '100px'}, 'center');
+        collectCards_desktop_TL.to($('.animatedLogoContainer'), {'margin-left': '0px'}, 'center');
         collectCards_desktop_TL.to(pinkCard, {x: -outer_X, y: outer_Y, rotate: -outer_deg}, 'center');
         collectCards_desktop_TL.to(redCard, {x: -inner_X, y: inner_Y, rotate: -inner_deg}, 'center');
         collectCards_desktop_TL.to(blueCard, {x: center_X, y: center_Y}, 'center');
@@ -362,14 +368,18 @@ if (/Mobi/.test(navigator.userAgent)) {
         let rotatePink = gsap.to(".pink-vector", { // Animazione vettore blu
             paused: true,
             rotate: angoloRotazione,
-            duration: 0.4
+            duration: 0.4,
+            delay: 0.1,
+            ease: "power1.inOut",
         });
 
         // blue-cat-title slides out animation
         let slideOutPinkTitle = gsap.to(".pink-cat-title", {
             paused: true,
             y: catTitleAnimationEndY,
-            duration: 0.3
+            duration: 0.3,
+            delay: 0.1,
+            ease: "power1.inOut",
         })
 
 
@@ -388,15 +398,18 @@ if (/Mobi/.test(navigator.userAgent)) {
         let rotateRed = gsap.to(".red-vector", { // Animazione vettore blu
             paused: true,
             rotate: angoloRotazione,
-            duration: 0.4
+            duration: 0.4,
+            delay: 0.1,
+            ease: "power1.inOut",
         });
     
         // red-cat-title slides out animation
         let slideOutRedTitle = gsap.to(".red-cat-title", {
             y: catTitleAnimationEndY,
             paused: true,
-            duration: 0.2,
-            ease: "power3",
+            duration: 0.3,
+            delay: 0.1,
+            ease: "power1.inOut",
         })
         
 
@@ -415,13 +428,17 @@ if (/Mobi/.test(navigator.userAgent)) {
             paused: true,
             rotate: angoloRotazione,
             duration: 0.4,
+            delay: 0.1,
+            ease: "power1.inOut",
         })
 
         // blue-cat-title slides out animation
         let slideOutBlueTitle = gsap.to(".blue-cat-title", {
             paused: true,
             y: catTitleAnimationEndY,
-            duration: 0.3
+            duration: 0.3,
+            delay: 0.1,
+            ease: "power1.inOut",
         })
 
 
@@ -441,13 +458,17 @@ if (/Mobi/.test(navigator.userAgent)) {
             paused: true,
             rotate: angoloRotazione,
             duration: 0.4,
+            delay: 0.1,
+            ease: "power1.inOut",
         })
 
         // yellow-cat-title slides out animation
         let yellowCatTitle = gsap.to(".yellow-cat-title", {
             paused: true,
             y: catTitleAnimationEndY,
-            duration: 0.2,
+            duration: 0.3,
+            delay: 0.1,
+            ease: "power1.inOut",
         })
 
 
@@ -467,14 +488,17 @@ if (/Mobi/.test(navigator.userAgent)) {
             paused: true,
             rotate: angoloRotazione,
             duration: 0.4,
+            delay: 0.1,
+            ease: "power1.inOut",
         })
 
         // green-cat-title slides out animation
         let greenCatTitle = gsap.to(".green-cat-title", {
             paused: true,
             y: catTitleAnimationEndY,
-            duration: 0.2,
-            ease: "power3",
+            duration: 0.3,
+            delay: 0.1,
+            ease: "power1.inOut",
         })
 
         // ===============================================================
@@ -542,6 +566,26 @@ if (/Mobi/.test(navigator.userAgent)) {
         // Card to center
 
         function clickedCardToCenter(clickedCard) {
+
+            let color;
+            if(clickedCard.hasClass("pink-single-card-wrapper")) {
+                console.log("pink");
+                color = "pink";
+            } else if (clickedCard.hasClass("red-single-card-wrapper")) {
+                console.log("red");
+                color = "red";
+            } else if (clickedCard.hasClass("blue-single-card-wrapper")) {
+                console.log("blue");
+                color = "blue";
+            } else if (clickedCard.hasClass("yellow-single-card-wrapper")) {
+                console.log("yellow");
+                color = "yellow";
+            } else if (clickedCard.hasClass("green-single-card-wrapper")) {
+                console.log("green");
+                color = "green";
+            }
+
+        
             gsap.to(clickedCard, {
                 x: 0,
                 y: 0,
@@ -564,15 +608,15 @@ if (/Mobi/.test(navigator.userAgent)) {
                 y: 0,
                 ease: "back",
                 bottom: 280,
-                onComplete: navigateToDeck,
+                onComplete: navigateToDeck(color),
             });
         }
 
         // Function to navigate to deck of chosen category
-        function navigateToDeck() {
+        function navigateToDeck(color) {
             setTimeout(function() {
-                window.location.href = "decks/_new-deck.html";
-            }, 500); // delay in ms
+                window.location.href = "decks/"+color+"-deck.html";
+            }, 1200); // delay in ms
         }
 
         // ===============================================================
@@ -860,6 +904,8 @@ if (/Mobi/.test(navigator.userAgent)) {
                 // Mouse is hovering a div with class "single-card-wrapper"
                 $('#cat-cursor').removeClass('next-cursor');
                 $('#cat-cursor').removeClass('prev-cursor');
+                $('#cat-cursor').removeClass('cat-cursor-invisible');
+                $('#arrow').removeClass('hide-arrow');
                 return; // Do nothing and exit the event handler
             }
 
@@ -867,14 +913,26 @@ if (/Mobi/.test(navigator.userAgent)) {
                 // Cursor is on the left half of the window
                 console.log('Cursor is on the left');
                 $('#cat-cursor').addClass('prev-cursor');
+                $('#cat-cursor').removeClass('cat-cursor-invisible');
                 $('#cat-cursor').removeClass('next-cursor');
+                $('#arrow').removeClass('hide-arrow');
 
             } else {
                 // Cursor is on the right half of the window
                 console.log('Cursor is on the right');
                 $('#cat-cursor').addClass('next-cursor');
+                $('#cat-cursor').removeClass('cat-cursor-invisible');
                 $('#cat-cursor').removeClass('prev-cursor');
+                $('#arrow').removeClass('hide-arrow');
             }
+        });
+
+        $('.barra-in-alto').mousemove(function hoverOnBarraInAlto() {
+            console.log('Hover on barra in alto');
+            $('#cat-cursor').addClass('cat-cursor-invisible');
+            $('#cat-cursor').removeClass('next-cursor');
+            $('#cat-cursor').removeClass('prev-cursor');
+            $('#arrow').addClass('hide-arrow');
         });
 
         // Manage clicks
@@ -910,6 +968,24 @@ if (/Mobi/.test(navigator.userAgent)) {
     // FINE DESKTOP
 }
 
+
+// Logo animation
+
+// keyframes
+var blueLogoKeyframe = 313;
+var greenLogoKeyframe = 32;
+var pinkLogoKeyframe = 90;
+var yellowLogoKeyframe = 248;
+var redLogoKeyframe = 190;
+var whiteLogoKeyframe = 136;
+
+var logoAnimation = bodymovin.loadAnimation({
+    container: document.getElementById('animatedLogoContainer'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: '../res/logo/animatedLogo_puntoColorato.json'
+});
 
 
 
