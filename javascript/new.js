@@ -564,7 +564,15 @@ if (/Mobi/.test(navigator.userAgent)) {
                 y: 0,
                 ease: "back",
                 bottom: 280,
+                onComplete: navigateToDeck,
             });
+        }
+
+        // Function to navigate to deck of chosen category
+        function navigateToDeck() {
+            setTimeout(function() {
+                window.location.href = "decks/_new-deck.html";
+            }, 500); // delay in ms
         }
 
         // ===============================================================
@@ -634,6 +642,8 @@ if (/Mobi/.test(navigator.userAgent)) {
         const deckPositions_opacity = [1, 1, 0.4, 0, 0, 0.4, 1];
         const deckPositions_scale = [1.25, 1, 1, 1, 1, 1, 1];
 
+        let distributeCardsAnimations = [];
+
         // Shows cards on load
         function showCards() {
 
@@ -644,18 +654,47 @@ if (/Mobi/.test(navigator.userAgent)) {
                 const card_opacity = deckPositions_opacity[i];
                 const card_scale = deckPositions_scale[i];
                 
-                gsap.to(card, {
+                let distributeCardsAnimation = gsap.to(card, {
                     x: card_X,
                     rotate: card_deg,
                     opacity: card_opacity,
                     scale: card_scale,
                     duration: 1,
                     ease: 'back',
+                    paused: true,
+                    delay: 0.5,
                 })
+
+                // Push animation to array
+                distributeCardsAnimations.push(distributeCardsAnimation);
+
+
             }
             $('body').css('pointer-events', 'all');
             console.log('Mouse unlocked');
+
+            // Play all animations in the array distributeCardsAnimations
+            distributeCardsAnimations.forEach(function(animation) {
+                animation.play();
+            });
         }
+
+        // Animate class "vector" on load, scaling up to 5 and rotating 180deg
+        let vectorAnimationTimeline = gsap.timeline();
+        vectorAnimationTimeline.add('start')
+        vectorAnimationTimeline.to($('.vector'), {
+            scale: 6,
+            rotate: 180,
+            duration: .8,
+            ease: 'power2.inOut',
+            delay: 1.5,
+        }, 'start');
+        vectorAnimationTimeline.to($('.vector-wrapper'), {
+            opacity: 0,
+            duration: .4,
+            ease: 'power2.inOut'
+        }, 'start+=1.85');
+
         showCards();
 
         // Function that manages the navigation to the right
@@ -788,20 +827,6 @@ if (/Mobi/.test(navigator.userAgent)) {
             paused: true,
         });
 
-        // Function that manages the click on the cards
-        $(window).on("click", function(event) {
-            let target = event.target;
-            console.log("Click on: " + target);
-            
-            if ($(target).parents().is(".clickable")) {
-                console.log("Click on clickable card");
-            } else if ($(target).parents().is(".prev")) {
-                navigateLeft();
-            } else if ($(target).parents().is(".next")) {
-                navigateRight();
-            }
-          });
-
         // Keyboard navigation
         $(document).keydown(function(event) {
             if (event.which === 39) { // ON ARROW RIGHT
@@ -814,17 +839,68 @@ if (/Mobi/.test(navigator.userAgent)) {
             }
         });
 
-        // Custom cursor using Tippy.js
-        // Docs here: https://atomiks.github.io/tippyjs/v6/faq/
-        tippy('.clickable', {
-            content: "Scopri",
-            theme: "tomato",
-            followCursor: true,
-            hideOnClick: false,
-            delay: 0,
-            duration: [200, 150],
-            arrow: false,
-            placement: 'bottom',
+
+        // Custom cursor definition
+        $(document).on('mousemove', function(event) {
+            let cursorOffsetX = $('.custom-cursors').width() / 2;
+            let cursorOffsetY = $('.custom-cursors').height() / 2;
+            $('.custom-cursors').css('left', event.clientX - cursorOffsetX + 'px');
+            $('.custom-cursors').css('top', event.clientY - cursorOffsetY + 'px');
+        });
+
+        // Custom cursor on hover 
+        $('.wrapper').mousemove(function hoverOnWrapper() {
+            var cursorX = event.pageX;
+            var windowWidth = $(window).width();
+            var halfWindowWidth = windowWidth / 2;
+            console.log('Hover on wrapper');
+
+            // Check if the mouse is hovering a div with class "single-card-wrapper"
+            if ($(event.target).parents().is(".clickable")) {
+                // Mouse is hovering a div with class "single-card-wrapper"
+                $('#cat-cursor').removeClass('next-cursor');
+                $('#cat-cursor').removeClass('prev-cursor');
+                return; // Do nothing and exit the event handler
+            }
+
+            if (cursorX < halfWindowWidth) {
+                // Cursor is on the left half of the window
+                console.log('Cursor is on the left');
+                $('#cat-cursor').addClass('prev-cursor');
+                $('#cat-cursor').removeClass('next-cursor');
+
+            } else {
+                // Cursor is on the right half of the window
+                console.log('Cursor is on the right');
+                $('#cat-cursor').addClass('next-cursor');
+                $('#cat-cursor').removeClass('prev-cursor');
+            }
+        });
+
+        // Manage clicks
+        $('.wrapper').click(function() {
+            var cursorX = event.pageX;
+            var windowWidth = $(window).width();
+            var halfWindowWidth = windowWidth / 2;
+
+            // Check if the mouse is clicks on a div with class "single-card-wrapper"
+            if ($(event.target).parents().is(".clickable")) {
+
+                // Clicked on clickable card 
+                // NAVIGATION TO SINGLE PAGE GOES HERE
+
+                return; // Exit the event handler
+            }
+        
+            if (cursorX < halfWindowWidth) {
+                // Cursor is on the left half of the window
+                console.log('Click on left');
+                navigateLeft();
+            } else {
+                // Cursor is on the right half of the window
+                console.log('Click on right');
+                navigateRight();
+            }
         });
 
         
