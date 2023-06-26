@@ -984,7 +984,7 @@ var logoAnimation = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: true,
     autoplay: true,
-    path: '/res/logo/logoAnimation.json'
+    path: '../res/logo/logoAnimation.json'
 });
 
 
