@@ -146,7 +146,9 @@ if (/Mobi/.test(navigator.userAgent)) {
             prevCat();
         } else if (event.target.classList.contains("current") || event.target.closest(".current")) {
             console.log("Current card clicked");
-            collectCards();
+            if (htmlTitle.includes("Home") === true) { // IF HTML TITLE of PAGE is HOME
+                collectCards();
+            }
         }
     });
 
@@ -174,9 +176,11 @@ if (/Mobi/.test(navigator.userAgent)) {
         collectTl.to(pinkCard, {x: pinkCard.width()*factor[i].pinkFactor}, 'start');
         collectTl.to(blueCard, {x: blueCard.width()*factor[i].blueFactor}, 'start');
         collectTl.add('end');
+        collectTl.call(navigateToDeckOnMobile, [i], 'end+=0.5');
 
         collectTl.play();
         console.log("collectTl played.");
+        // collectTl.onComplete(navigateToDeckOnMobile(i));
     }
 
     // Array that contains the factors for the translation in the collecting animation
@@ -188,6 +192,66 @@ if (/Mobi/.test(navigator.userAgent)) {
         {greenFactor: 1, redFactor: 0, yellowFactor: -1, pinkFactor: -2, blueFactor: 2}, // red is current
     ]
 
+    function navigateToDeckOnMobile(card_i) {
+        console.log("Running navigateToDeckOnMobile()...");
+        if (card_i === 0) {
+            window.location.href = "decks/yellow-deck.html";
+        } else if (card_i === 1) {
+            window.location.href = "decks/pink-deck.html";
+        } else if (card_i === 2) {
+            window.location.href = "decks/blue-deck.html";
+        } else if (card_i === 3) {
+            window.location.href = "decks/green-deck.html";
+        } else if (card_i === 4) {
+            window.location.href = "decks/red-deck.html";
+        }
+    }
+
+    if (htmlTitle.includes("Home") === true) { // IF HTML TITLE of PAGE is HOME
+        console.log("Home page, mobile");
+
+        collectTl.clear();
+        console.log("collectTl cleared.");
+        let i = loop.current();
+        // Adding tweens to timeline
+        collectTl.add('start');
+        collectTl.fromTo(greenCard, {x: greenCard.width()*factor[i].greenFactor},  {x: 0}, 'start+=0.5');
+        collectTl.fromTo(redCard, {x: redCard.width()*factor[i].redFactor}, {x: 0}, 'start+=0.5');
+        collectTl.fromTo(yellowCard, {x: yellowCard.width()*factor[i].yellowFactor}, {x: 0}, 'start+=0.5');
+        collectTl.fromTo(pinkCard, {x: pinkCard.width()*factor[i].pinkFactor}, {x: 0}, 'start+=0.5');
+        collectTl.fromTo(blueCard, {x: blueCard.width()*factor[i].blueFactor}, {x: 0}, 'start+=0.5');
+        collectTl.add('end');
+
+        collectTl.play();
+        
+    } else if (htmlTitle.includes("deck") === true) {
+        console.log("Page is a deck, mobile")
+        
+        let deck = [];
+
+        $('.single-card-wrapper').each(function() {
+            deck.push(this);
+        });
+
+        deck_factors = [3, 2, 1, 0, -1, -2, -3];
+        console.log(deck);
+
+        collectTl.clear();
+        console.log("collectTl cleared.");
+        let i = loop.current();
+        // Adding tweens to timeline
+        collectTl.add('start');
+        collectTl.fromTo(deck[0], {x: $(deck[0]).width()*deck_factors[0]},  {x: 0}, 'start+=0.5');
+        collectTl.fromTo(deck[1], {x: $(deck[1]).width()*deck_factors[1]}, {x: 0}, 'start+=0.5');
+        collectTl.fromTo(deck[2], {x: $(deck[2]).width()*deck_factors[2]}, {x: 0}, 'start+=0.5');
+        collectTl.fromTo(deck[3], {x: $(deck[3]).width()*deck_factors[3]}, {x: 0}, 'start+=0.5');
+        collectTl.fromTo(deck[4], {x: $(deck[4]).width()*deck_factors[4]}, {x: 0}, 'start+=0.5');
+        collectTl.fromTo(deck[5], {x: $(deck[5]).width()*deck_factors[5]}, {x: 0}, 'start+=0.5');
+        collectTl.fromTo(deck[6], {x: $(deck[6]).width()*deck_factors[6]}, {x: 0}, 'start+=0.5');
+        collectTl.add('end');
+
+        collectTl.play();
+    }
 
 } else { // ON DEKSTOP ONLY
     console.log("Desktop");

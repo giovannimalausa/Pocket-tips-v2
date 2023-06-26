@@ -82,6 +82,10 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     display: none;
 }
 
+.menu-button {
+    display: none;
+}
+
 .animatedLogoContainer {
     width: 300px;
 }
@@ -323,6 +327,10 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     .animatedLogoContainer {
         width: 320px;
         margin: 0 auto;
+    }
+
+    .menu-button {
+        display: flex;
     }
 
     .menu-link {
