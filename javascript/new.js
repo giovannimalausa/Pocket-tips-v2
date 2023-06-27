@@ -693,8 +693,8 @@ if (/Mobi/.test(navigator.userAgent)) {
             target: window, // target element
             type: "wheel", // type of events to observe
             speed: .5, // speed of the scroll to animation
-            onDown: () => collectCards_desktop_TL.tweenTo("end"), // callback function on swipe left
-            tolerance: 80, // amount of pixels to swipe before triggering the callback
+            onDown: () => collectCards_desktop_TL.tweenTo("end"),
+            tolerance: 180, // amount of pixels to swipe before triggering the callback
         })
     } else if (htmlTitle.includes("deck") === true) { // IF HTML TITLE of PAGE is that of a DECK
         console.log("Page is a deck")
