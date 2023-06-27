@@ -94,9 +94,9 @@ function updateVariablesOnResize() {
         cat_title_bottom = 280;
 
     } else if (windowWidth >= 768 && windowWidth < 1450) {
-        cat_title_bottom = 230;
+        cat_title_bottom = 252;
     } else if (windowWidth >= 1450) {
-        cat_title_bottom = 280;
+        cat_title_bottom = 300;
     }
 }
 

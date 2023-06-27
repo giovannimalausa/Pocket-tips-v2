@@ -160,7 +160,7 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
 
 .cat-title {
     position: relative;
-    bottom: 250px;
+    bottom: 280px;
     margin: 0;
     padding: 0;
     
@@ -249,7 +249,7 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
 
 .cat-title-in-deck {
     position: relative;
-    bottom: 250px;
+    bottom: 280px;
     margin: 0;
     z-index: 100;
     display: block;
@@ -287,7 +287,7 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     font-size: 24px;
 }
 
-@media screen and (min-width: 700px) and (max-width: 1245px) {
+@media screen and (min-width: 700px) and (max-width: 1200px) {
     .window-size-alert {
         display: flex;
         justify-content: center;
@@ -553,7 +553,7 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     }
 
     .cat-title-in-deck {
-        bottom: 230px;
+        bottom: 252px;
         font-family: 'PP Fragment Variable';
         font-size: 130px;
         font-variation-settings: "wght" 550, "ital" 0, "SRFF" 0;
@@ -694,9 +694,9 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     }
 
     .cat-title-in-deck {
-        bottom: 280px;
+        bottom: 300px;
     }
-    
+
     .vector {
         width: 126px;
         height: 126px;
