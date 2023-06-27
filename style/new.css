@@ -269,20 +269,22 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
 }
 
 .window-size-alert {
-    display: none;
     position: fixed;
-    top: 0;
+    top: -100vh;
     left: 0;
     width: 100vw;
     height: 100vh;
     z-index: 1000;
     background-color: black;
-    opacity: 0.8;
+    opacity: 0;
+    transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .window-size-alert h1 {
     opacity: 1;
     color: white;
+    font-family: 'PP Fragment Variable';
+    font-size: 24px;
 }
 
 @media screen and (min-width: 700px) and (max-width: 1245px) {
@@ -290,6 +292,8 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
         display: flex;
         justify-content: center;
         align-items: center;
+        top: 0vh;
+        opacity: 0.8;
     }
 }
 
@@ -509,21 +513,20 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     }
 
     .vector {
-        width: 126px;
-        height: 126px;
+        width: 105;
+        height: 105px;
         object-fit: contain;
     }
 
     .face-wrapper h1 {
-        font-size: 38px;
-        line-height: 46px;
+        font-size: 26px;
+        line-height: 32px;
         user-select: none;
-
     }
     
     .face-wrapper h2 {
-        font-size: 18px;
-        line-height: 23px;
+        font-size: 16px;
+        line-height: 21px;
         user-select: none;
     }
 
@@ -545,7 +548,7 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
 
     .cat-title {
         opacity: 1;
-        bottom: 200px;
+        bottom: 166px;
         pointer-events: none;
     }
 
@@ -682,5 +685,29 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
         max-height: 450px;
         margin: 0;
         z-index: 10;
+    }
+
+    .cat-title {
+        opacity: 1;
+        bottom: 200px;
+        pointer-events: none;
+    }
+
+    .vector {
+        width: 126px;
+        height: 126px;
+        object-fit: contain;
+    }
+
+    .face-wrapper h1 {
+        font-size: 38px;
+        line-height: 46px;
+        user-select: none;
+    }
+    
+    .face-wrapper h2 {
+        font-size: 18px;
+        line-height: 23px;
+        user-select: none;
     }
 }
