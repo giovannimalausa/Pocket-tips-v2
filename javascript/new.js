@@ -345,6 +345,7 @@ if (/Mobi/.test(navigator.userAgent)) {
                 enterPink.play();
                 rotatePink.play();
                 slideOutPinkTitle.play();
+                logoAnimation.goToAndStop(pinkLogoKeyframe, true);
             }
         });
         pinkCard.on("mouseleave", function() {
@@ -352,6 +353,7 @@ if (/Mobi/.test(navigator.userAgent)) {
                 enterPink.reverse();
                 rotatePink.reverse();
                 slideOutPinkTitle.reverse();
+                logoAnimation.play();
             }
         });
 
@@ -361,6 +363,7 @@ if (/Mobi/.test(navigator.userAgent)) {
                 enterRed.play();
                 rotateRed.play();
                 slideOutRedTitle.play();
+                logoAnimation.goToAndStop(redLogoKeyframe, true);
             }
 
         });
@@ -369,6 +372,7 @@ if (/Mobi/.test(navigator.userAgent)) {
                 enterRed.reverse();
                 rotateRed.reverse();
                 slideOutRedTitle.reverse();
+                logoAnimation.play();
             }
         });
 
@@ -378,6 +382,7 @@ if (/Mobi/.test(navigator.userAgent)) {
                 enterBlue.play(); // Animazione card
                 rotateBlue.play(); // Animazione vettore blu
                 slideOutBlueTitle.play();
+                logoAnimation.goToAndStop(blueLogoKeyframe, true);
             }
         });
         blueCard.on("mouseleave", function() {
@@ -385,6 +390,7 @@ if (/Mobi/.test(navigator.userAgent)) {
                 enterBlue.reverse(); // Animazione card (reverse)
                 rotateBlue.reverse(); // Animazione vettore blue (reverse)
                 slideOutBlueTitle.reverse();
+                logoAnimation.play();
             }
         });
 
@@ -394,6 +400,7 @@ if (/Mobi/.test(navigator.userAgent)) {
                 enterYellow.play();
                 rotateYellow.play();
                 yellowCatTitle.play();
+                logoAnimation.goToAndStop(yellowLogoKeyframe, true);
             }
         });
         yellowCard.on("mouseleave", function() {
@@ -401,6 +408,7 @@ if (/Mobi/.test(navigator.userAgent)) {
                 enterYellow.reverse();
                 rotateYellow.reverse();
                 yellowCatTitle.reverse();
+                logoAnimation.play();
             }
         });
 
@@ -410,6 +418,7 @@ if (/Mobi/.test(navigator.userAgent)) {
                 enterGreen.play();
                 rotateGreen.play();
                 greenCatTitle.play();
+                logoAnimation.goToAndStop(greenLogoKeyframe, true);
             }
         });
         greenCard.on("mouseleave", function() {
@@ -417,6 +426,7 @@ if (/Mobi/.test(navigator.userAgent)) {
                 enterGreen.reverse();
                 rotateGreen.reverse();
                 greenCatTitle.reverse();
+                logoAnimation.play();
             }
         });
 
