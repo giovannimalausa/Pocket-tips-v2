@@ -84,6 +84,29 @@ const factor = [
 
 deck_factors = [3, 2, 1, 0, -1, -2, -3];
 
+// Change variables on resize
+let cat_title_bottom;
+function updateVariablesOnResize() {
+    let windowWidth = $(window).width();
+
+    // Breakpoints
+    if (windowWidth < 768) {
+        cat_title_bottom = 280;
+
+    } else if (windowWidth >= 768 && windowWidth < 1450) {
+        cat_title_bottom = 230;
+    } else if (windowWidth >= 1450) {
+        cat_title_bottom = 280;
+    }
+}
+
+// Initial update of the variables
+updateVariablesOnResize();
+
+// Event listener for window resize
+$(window).resize(updateVariablesOnResize());
+
+
 // Checking if mobile or desktop
 if (/Mobi/.test(navigator.userAgent)) {
     console.log("Mobile");
@@ -730,7 +753,7 @@ if (/Mobi/.test(navigator.userAgent)) {
                 opacity: .2,
                 y: 0,
                 ease: "back",
-                bottom: 280,
+                bottom: cat_title_bottom,
                 onComplete: navigateToDeck(color),
             });
         }
@@ -1109,7 +1132,6 @@ var logoAnimation = bodymovin.loadAnimation({
     autoplay: true,
     path: '../res/logo/logoAnimation.json'
 });
-
 
 
 

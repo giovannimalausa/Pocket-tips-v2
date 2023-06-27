@@ -553,7 +553,7 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     }
 
     .cat-title-in-deck {
-        bottom: 280px;
+        bottom: 230px;
         font-family: 'PP Fragment Variable';
         font-size: 130px;
         font-variation-settings: "wght" 550, "ital" 0, "SRFF" 0;
@@ -693,6 +693,10 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
         pointer-events: none;
     }
 
+    .cat-title-in-deck {
+        bottom: 280px;
+    }
+    
     .vector {
         width: 126px;
         height: 126px;
