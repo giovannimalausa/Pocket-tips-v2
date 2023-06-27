@@ -76,6 +76,7 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     height: 100px;
     justify-content: center;
     align-items: center;
+    z-index: 20;
 }
 
 .motto-container {
