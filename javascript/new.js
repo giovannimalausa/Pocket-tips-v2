@@ -28,6 +28,51 @@ let collectTl = gsap.timeline({
     }
 });
 
+// Creating array for deck
+let deck = [];
+
+// Var e const -------------------------------------------------------------
+
+let position_0_x_value; 
+let position_1_x_value;
+let position_2_x_value;
+let position_3_x_value;
+
+let card0_x; 
+let card1_x;
+let card2_x;
+let card3_x;
+let card4_x;
+let card5_x;
+let card6_x;
+
+let card0_deg; // center
+let card1_deg; // right
+let card2_deg; // far right
+let card3_deg;
+let card4_deg;
+let card5_deg; // far left
+let card6_deg; // left
+
+// Small-icons in the deck cards
+let smallIcons;
+let rotateSmallIconsLeft; // animation left
+let rotateSmallIconsRight; // animation left
+
+// Carousel states
+let cardZeroPosition;
+let calculatedPosition;
+
+// Arrays
+let deckPositions_X = [];
+let deckPositions_deg = [];
+let deckPositions_opacity = [];
+let deckPositions_scale = [];
+
+let distributeCardsAnimations = [];
+
+// ------------------------------------------------------------------------
+
 // Array that contains the factors for the translation in the collecting animation
 const factor = [
     {greenFactor: 2, redFactor: 1, yellowFactor: 0, pinkFactor: -1, blueFactor: -2}, // yellow is current
@@ -706,10 +751,8 @@ if (/Mobi/.test(navigator.userAgent)) {
             onDown: () => collectCards_desktop_TL.tweenTo("end"),
             tolerance: 180, // amount of pixels to swipe before triggering the callback
         })
-    } else if (htmlTitle.includes("deck") === true) { // IF HTML TITLE of PAGE is that of a DECK
+    } else if (htmlTitle.includes("deck") === true) { // IF HTML TITLE of PAGE is that of a DECK (desktop)
         console.log("Page is a deck")
-        
-        let deck = [];
 
         $('.single-card-wrapper').each(function() {
             deck.push(this);
@@ -725,46 +768,42 @@ if (/Mobi/.test(navigator.userAgent)) {
         console.log("Deck created, with ", deck.length, " cards");
 
         // Posizioni predefinite, senza unità di misura
-        let position_0_x_value = 0; 
-        let position_1_x_value = 24;
-        let position_2_x_value = 46;
-        let position_3_x_value = 65;
-        let position_4_x_value = '-'+position_3_x_value;
-        let position_5_x_value = '-'+position_2_x_value;
-        let position_6_x_value = '-'+position_1_x_value;
+        position_0_x_value = 0; 
+        position_1_x_value = 24;
+        position_2_x_value = 46;
+        position_3_x_value = 65;
+
 
         // Posizioni predefinite
-        let card0_x = position_0_x_value + 'vw'; 
-        let card1_x = position_1_x_value + 'vw';
-        let card2_x = position_2_x_value + 'vw';
-        let card3_x = position_3_x_value + 'vw';
-        let card4_x = '-'+card3_x;
-        let card5_x = '-'+card2_x;
-        let card6_x = '-'+card1_x;
+        card0_x = position_0_x_value + 'vw'; 
+        card1_x = position_1_x_value + 'vw';
+        card2_x = position_2_x_value + 'vw';
+        card3_x = position_3_x_value + 'vw';
+        card4_x = '-'+card3_x;
+        card5_x = '-'+card2_x;
+        card6_x = '-'+card1_x;
 
         // Angoli predefiniti
-        let card0_deg = 0; // center
-        let card1_deg = 0.93; // right
-        let card2_deg = -1.32; // far right
-        let card3_deg = 21;
-        let card4_deg = 0;
-        let card5_deg = 1.85; // far left
-        let card6_deg = -1.64; // left
+        card0_deg = 0; // center
+        card1_deg = 0.93; // right
+        card2_deg = -1.32; // far right
+        card3_deg = 21;
+        card4_deg = 0;
+        card5_deg = 1.85; // far left
+        card6_deg = -1.64; // left
 
         // Small-icons in the deck cards
-        let smallIcons = $('.small-icon');
+        smallIcons = $('.small-icon');
 
         // Carousel states
-        let cardZeroPosition = 0;
-        let calculatedPosition = 0;
+        cardZeroPosition = 0;
+        calculatedPosition = 0;
 
         // Arrays
-        const deckPositions_X = [card0_x, card1_x, card2_x, card3_x, card4_x, card5_x, card6_x];
-        const deckPositions_deg = [card0_deg, card1_deg, card2_deg, card3_deg, card4_deg, card5_deg, card6_deg];
-        const deckPositions_opacity = [1, 1, 0.4, 0, 0, 0.4, 1];
-        const deckPositions_scale = [1.25, 1, 1, 1, 1, 1, 1];
-
-        let distributeCardsAnimations = [];
+        deckPositions_X = [card0_x, card1_x, card2_x, card3_x, card4_x, card5_x, card6_x];
+        deckPositions_deg = [card0_deg, card1_deg, card2_deg, card3_deg, card4_deg, card5_deg, card6_deg];
+        deckPositions_opacity = [1, 1, 0.4, 0, 0, 0.4, 1];
+        deckPositions_scale = [1.25, 1, 1, 1, 1, 1, 1];
 
         // Shows cards on load
         function showCards() {
@@ -929,7 +968,7 @@ if (/Mobi/.test(navigator.userAgent)) {
 
         // Rotate animation of small icons in the deck
         // When going LEFT <<<<-------
-        let rotateSmallIconsLeft = gsap.to(smallIcons, {
+        rotateSmallIconsLeft = gsap.to(smallIcons, {
             keyframes: {
                 x: [0, -10, 0],
                 rotate: [0, -180, 0],
@@ -939,7 +978,7 @@ if (/Mobi/.test(navigator.userAgent)) {
             paused: true,
         });
         // When going RIGHT ------>>>>
-        let rotateSmallIconsRight = gsap.to(smallIcons, {
+        rotateSmallIconsRight = gsap.to(smallIcons, {
             keyframes: {
                 x: [0, 10, 0],
                 rotate: [0, 180, 0],
