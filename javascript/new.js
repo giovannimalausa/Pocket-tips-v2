@@ -997,7 +997,13 @@ if (/Mobi/.test(navigator.userAgent)) {
 
         $('.barra-in-alto').mousemove(function hoverOnBarraInAlto() {
             console.log('Hover on barra in alto');
+            if ($(event.target).is('[class*=link]')) {
+                console.log('Hover on link');
+                $('#cat-cursor').addClass('cat-cursor-on-button');
+                return;
+            }
             $('#cat-cursor').addClass('cat-cursor-invisible');
+            $('#cat-cursor').removeClass('cat-cursor-on-button');
             $('#cat-cursor').removeClass('next-cursor');
             $('#cat-cursor').removeClass('prev-cursor');
             $('#arrow').addClass('hide-arrow');
