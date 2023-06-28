@@ -393,6 +393,7 @@ a.instagram-link {
     font-family: 'PP Fragment Variable';
     font-variation-settings: 'wght' 550, 'SRFF' 80, 'slnt' 0;
     font-size: 24px;
+    line-height: 28px;
     color: black;
     margin: 0;
     padding: 0;
@@ -743,9 +744,13 @@ a.instagram-link {
         object-fit: contain;
     }
 
+    .face-wrapper {
+        padding: 24px;
+    }
+
     .face-wrapper h1 {
         font-size: 26px;
-        line-height: 32px;
+        line-height: 30px;
         user-select: none;
     }
     
@@ -948,7 +953,7 @@ a.instagram-link {
 
     .face-wrapper h1 {
         font-size: 38px;
-        line-height: 46px;
+        line-height: 42px;
         user-select: none;
     }
     
