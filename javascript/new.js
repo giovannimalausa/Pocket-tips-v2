@@ -106,6 +106,55 @@ updateVariablesOnResize();
 // Event listener for window resize
 $(window).resize(updateVariablesOnResize());
 
+// LINKS to ARTICLES ============================================================
+// greendeck
+let greenArticle_0 = 'https://www.polimi.it/' 
+let greenArticle_1 = 'https://www.designdellacomunicazione.polimi.it/en/ddc-eng/' 
+let greenArticle_2 = 'https://stackoverflow.com/questions/24077725/mobile-safari-sometimes-does-not-trigger-the-click-event' 
+let greenArticle_3 = 'https://www.polimi.it/' 
+let greenArticle_4 = 'https://www.polimi.it/' 
+let greenArticle_5 = 'https://www.polimi.it/' 
+let greenArticle_6 = 'https://www.polimi.it/' 
+
+// pinkdeck
+let pinkArticle_0 = 'https://www.polimi.it/'
+let pinkArticle_1 = 'https://www.polimi.it/'
+let pinkArticle_2 = 'https://www.polimi.it/'
+let pinkArticle_3 = 'https://www.polimi.it/'
+let pinkArticle_4 = 'https://www.polimi.it/'
+let pinkArticle_5 = 'https://www.polimi.it/'
+let pinkArticle_6 = 'https://www.polimi.it/'
+
+// yellowdeck
+let yellowArticle_0 = 'https://www.polimi.it/'
+let yellowArticle_1 = 'https://www.polimi.it/'
+let yellowArticle_2 = 'https://www.polimi.it/'
+let yellowArticle_3 = 'https://www.polimi.it/'
+let yellowArticle_4 = 'https://www.polimi.it/'
+let yellowArticle_5 = 'https://www.polimi.it/'
+let yellowArticle_6 = 'https://www.polimi.it/'
+
+// bluedeck
+let blueArticle_0 = 'https://www.polimi.it/'
+let blueArticle_1 = 'https://www.polimi.it/'
+let blueArticle_2 = 'https://www.polimi.it/'
+let blueArticle_3 = 'https://www.polimi.it/'
+let blueArticle_4 = 'https://www.polimi.it/'
+let blueArticle_5 = 'https://www.polimi.it/'
+let blueArticle_6 = 'https://www.polimi.it/'
+
+// reddeck
+let redArticle_0 = 'https://www.polimi.it/'
+let redArticle_1 = 'https://www.polimi.it/'
+let redArticle_2 = 'https://www.polimi.it/'
+let redArticle_3 = 'https://www.polimi.it/'
+let redArticle_4 = 'https://www.polimi.it/'
+let redArticle_5 = 'https://www.polimi.it/'
+let redArticle_6 = 'https://www.polimi.it/'
+
+
+//  =============================================================================
+
 
 // Checking if mobile or desktop
 if (/Mobi/.test(navigator.userAgent)) {
@@ -373,7 +422,7 @@ if (/Mobi/.test(navigator.userAgent)) {
         collectCards_desktop_TL.to($('.motto-container'), {display: 'none', duration: 0});
         collectCards_desktop_TL.add('center', 1.25);
         collectCards_desktop_TL.to($('.barra-in-alto-espansa'), {opacity: 1, top: 0, height: '100px'}, 'center');
-        collectCards_desktop_TL.to($('.animatedLogoContainer'), {'margin-left': '0px'}, 'center');
+        collectCards_desktop_TL.fromTo($('.animatedLogoContainer'), {width: '320px'}, {'margin-left': '0px', width: '200px'}, 'center');
         collectCards_desktop_TL.to(pinkCard, {x: -outer_X, y: outer_Y, rotate: -outer_deg}, 'center');
         collectCards_desktop_TL.to(redCard, {x: -inner_X, y: inner_Y, rotate: -inner_deg}, 'center');
         collectCards_desktop_TL.to(blueCard, {x: center_X, y: center_Y}, 'center');
@@ -774,8 +823,11 @@ if (/Mobi/.test(navigator.userAgent)) {
             onDown: () => collectCards_desktop_TL.tweenTo("end"),
             tolerance: 180, // amount of pixels to swipe before triggering the callback
         })
-    } else if (htmlTitle.includes("deck") === true) { // IF HTML TITLE of PAGE is that of a DECK (desktop)
+    } else if ($('meta[name="pageType"]').attr('content') === 'deck') { // IF deck on desktop
         console.log("Page is a deck")
+
+        var deck_color = $('meta[name="deckColor"]').attr('content');
+
 
         $('.single-card-wrapper').each(function() {
             deck.push(this);
@@ -1037,7 +1089,6 @@ if (/Mobi/.test(navigator.userAgent)) {
             var cursorX = event.pageX;
             var windowWidth = $(window).width();
             var halfWindowWidth = windowWidth / 2;
-            console.log('Hover on wrapper');
 
             // Check if the mouse is hovering a div with class "single-card-wrapper"
             if ($(event.target).parents().is(".clickable")) {
@@ -1051,7 +1102,6 @@ if (/Mobi/.test(navigator.userAgent)) {
 
             if (cursorX < halfWindowWidth) {
                 // Cursor is on the left half of the window
-                console.log('Cursor is on the left');
                 $('#cat-cursor').addClass('prev-cursor');
                 $('#cat-cursor').removeClass('cat-cursor-invisible');
                 $('#cat-cursor').removeClass('next-cursor');
@@ -1059,7 +1109,6 @@ if (/Mobi/.test(navigator.userAgent)) {
 
             } else {
                 // Cursor is on the right half of the window
-                console.log('Cursor is on the right');
                 $('#cat-cursor').addClass('next-cursor');
                 $('#cat-cursor').removeClass('cat-cursor-invisible');
                 $('#cat-cursor').removeClass('prev-cursor');
@@ -1067,10 +1116,29 @@ if (/Mobi/.test(navigator.userAgent)) {
             }
         });
 
-        $('.barra-in-alto').mousemove(function hoverOnBarraInAlto() {
+        $('.barra-in-alto').on('mousemove', function hoverOnBarraInAlto() {
             console.log('Hover on barra in alto');
             if ($(event.target).is('[class*=link]')) {
-                console.log('Hover on link');
+                // console.log('Hover on link');
+                $('#cat-cursor').addClass('cat-cursor-on-button');
+                return;
+            }
+            $('#cat-cursor').addClass('cat-cursor-invisible');
+            $('#cat-cursor').removeClass('cat-cursor-on-button');
+            $('#cat-cursor').removeClass('next-cursor');
+            $('#cat-cursor').removeClass('prev-cursor');
+            $('#arrow').addClass('hide-arrow');
+        });
+
+        $('.menu-link').click(function() {
+            console.log('Click on menu link');
+            $('.fullpage-menu').toggleClass('showmenu');
+        });
+
+        $('.fullpage-menu').mousemove(function() {
+            console.log('Hover on menu');
+            if ($(event.target).is('[class*=link]')) {
+                // console.log('Hover on link');
                 $('#cat-cursor').addClass('cat-cursor-on-button');
                 return;
             }
@@ -1092,6 +1160,15 @@ if (/Mobi/.test(navigator.userAgent)) {
 
                 // Clicked on clickable card 
                 // NAVIGATION TO SINGLE PAGE GOES HERE
+                var clickableElement = $(event.target).parents('.clickable');
+                var index = clickableElement.index();
+                console.log('Index of the clickable element:', index);
+                
+                
+                // generate the URL of the article combining two variables to get the full name of the variable containing the URL
+                let url = eval(deck_color + "Article_" + index);
+                console.log('opening URL:', url);
+                window.open(url, '_blank')
 
                 return; // Exit the event handler
             }
@@ -1113,6 +1190,8 @@ if (/Mobi/.test(navigator.userAgent)) {
 
     // FINE DESKTOP
 }
+
+
 
 
 // Logo animation
