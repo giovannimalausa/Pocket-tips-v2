@@ -111,19 +111,38 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
 
 .logo-container, .animatedLogoContainer {
     position: relative;
-    height: 20px;
-    width: 170px;
+    height: 18px;
+    width: 154px;
 }
 
 .motto-container {
     display: none;
 }
 
-.menu-button {
+.menu-text {
     display: none;
 }
 
-/* BREAK */
+.menu-hamburger {
+    display: flex;
+    height: 18px;
+    width: 18px;
+    color: white;
+    filter: invert(0);
+    transition: filter 0.3s ease-in-out;
+}
+
+.inverted {
+    filter: invert(1);
+}
+
+.menu-button-in-home {
+    position: absolute;
+    right: 5vw;
+}
+
+
+/* Fullpage Menu */
 
 .fullpage-menu {
     display: flex;
@@ -419,7 +438,7 @@ a.instagram-link {
     position: relative;
     bottom: 220px;
     margin: 0;
-    z-index: 100;
+    z-index: 10;
     display: block;
 
     color: white;
@@ -471,7 +490,7 @@ a.instagram-link {
         justify-content: space-between;
         padding-left: 5vw;
         padding-right: 5vw;
-        z-index: 50;
+        z-index: 100;
     }
 
     .barra-in-alto-espansa {
@@ -523,12 +542,24 @@ a.instagram-link {
       }
 
     .animatedLogoContainer {
-        width: 200px;
         margin: 0 auto;
+    }
+
+    .logo-container, .animatedLogoContainer {
+        width: 214px;
+        height: 25px;
     }
 
     .menu-button {
         display: flex;
+    }
+
+    .menu-text {
+        display: flex;
+    }
+
+    .menu-hamburger-icon, .menu-hamburger {
+        display: none;
     }
 
     .menu-link {
@@ -882,8 +913,8 @@ a.instagram-link {
 @media (min-width: 1450px) {
 
     .logo-container, .animatedLogoContainer {
-        width: 214px;
-        height: 25px;
+        width: 275px;
+        height: 32px;
     }
 
     .fullpage-menu ul {
@@ -935,10 +966,5 @@ a.instagram-link {
 
     a.instagram-link {
         font-size: 30px;
-    }
-
-    .logo-container, .animatedLogoContainer {
-        width: 320px;
-        height: 39px;
     }
 }

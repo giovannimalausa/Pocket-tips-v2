@@ -161,8 +161,8 @@
 
     .logo-container {
         position: relative;
-        height: 25px;
-        width: 214px;
+        height: 18px;
+        width: 154px;
     }
 
     .logo {
@@ -170,8 +170,8 @@
     }
 
     #logo-img-on-light, #logo-img-on-dark {
-        height: 25px;
-        width: 214px;
+        height: 18px;
+        width: 154px;
         transition: opacity 0.3s ease-in-out;
     }
 
@@ -212,8 +212,13 @@
         }
 
         #menu-hamburger-icon {
-        display: none;
-    }
+            display: none;
+        }
+
+        .logo-container, #logo-img-on-light, #logo-img-on-dark {
+            height: 25px;
+            width: 214px;
+        }
 
         .menu-button {
             display: flex;
@@ -491,6 +496,11 @@
     }
 
     @media (min-width: 1450px) {
+        .logo-container, #logo-img-on-light, #logo-img-on-dark {
+            height: 32px;
+            width: 275px;
+        }
+
         .fullpage-menu ul {
             gap: 16px;
         }

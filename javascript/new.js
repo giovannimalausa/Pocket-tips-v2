@@ -374,9 +374,13 @@ if (/Mobi/.test(navigator.userAgent)) {
         collectTl.play();
     }
 
+    $('.menu-hamburger').click(function() {
+        console.log('Click on menu hamburger');
+        $('.fullpage-menu').toggleClass('showmenu');
+    });
+
 } else { // ON DEKSTOP ONLY
     console.log("Desktop");
-    
 
     if (htmlTitle.includes("Home") === true) { // IF HTML TITLE of PAGE is HOME
 
@@ -421,8 +425,8 @@ if (/Mobi/.test(navigator.userAgent)) {
         collectCards_desktop_TL.to($('.barra-in-alto-espansa'), {top: -300, duration: 0.5}, 'start-navbar-=0.5');
         collectCards_desktop_TL.to($('.motto-container'), {display: 'none', duration: 0});
         collectCards_desktop_TL.add('center', 1.25);
-        collectCards_desktop_TL.to($('.barra-in-alto-espansa'), {opacity: 1, top: 0, height: '100px'}, 'center');
-        collectCards_desktop_TL.fromTo($('.animatedLogoContainer'), {width: '320px'}, {'margin-left': '0px', width: '200px'}, 'center');
+        collectCards_desktop_TL.to($('.barra-in-alto-espansa'), {opacity: 1, top: 0, height: '85px'}, 'center');
+        collectCards_desktop_TL.fromTo($('.animatedLogoContainer'), {width: '456px', height: '53px'}, {'margin-left': '0px', width: '275px', height: '32px'}, 'center');
         collectCards_desktop_TL.to(pinkCard, {x: -outer_X, y: outer_Y, rotate: -outer_deg}, 'center');
         collectCards_desktop_TL.to(redCard, {x: -inner_X, y: inner_Y, rotate: -inner_deg}, 'center');
         collectCards_desktop_TL.to(blueCard, {x: center_X, y: center_Y}, 'center');
@@ -1147,11 +1151,6 @@ if (/Mobi/.test(navigator.userAgent)) {
 
         $('.menu-link').click(function() {
             console.log('Click on menu link');
-            $('.fullpage-menu').toggleClass('showmenu');
-        });
-
-        $('.menu-hamburger').click(function() {
-            console.log('Click on menu hamburger');
             $('.fullpage-menu').toggleClass('showmenu');
         });
 
