@@ -584,7 +584,7 @@
         $('.custom-cursors').css('left', event.clientX - cursorOffsetX + 'px');
         $('.custom-cursors').css('top', event.clientY - cursorOffsetY + 'px');
 
-        if ($(event.target).is('a') || $(event.target).closest('a').length > 0) {
+        if ($(event.target).is('a') || $(event.target).closest('a').length > 0 || $(event.target).closest('.barra-frecce').length > 0)  {
             // console.log('Hover on link');
             $('#cat-cursor').addClass('cat-cursor-on-button');
             console.log("On link");

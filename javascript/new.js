@@ -305,7 +305,7 @@ if (/Mobi/.test(navigator.userAgent)) {
     // Check color of the deck and set the frame animation to the right color
     var deck_color = $('meta[name="deckColor"]').attr('content');
     if (deck_color == "pink") {
-        logoAnimation.goToAndStop(greenLogoKeyframe, true);
+        logoAnimation.goToAndStop(pinkLogoKeyframe, true);
     } else if (deck_color == "red") {
         logoAnimation.goToAndStop(redLogoKeyframe, true);
     } else if (deck_color == "blue") {
@@ -834,7 +834,7 @@ if (/Mobi/.test(navigator.userAgent)) {
         // Check color of the deck and set the frame animation to the right color
         var deck_color = $('meta[name="deckColor"]').attr('content');
         if (deck_color == "pink") {
-            logoAnimation.goToAndStop(greenLogoKeyframe, true);
+            logoAnimation.goToAndStop(pinkLogoKeyframe, true);
         } else if (deck_color == "red") {
             logoAnimation.goToAndStop(redLogoKeyframe, true);
         } else if (deck_color == "blue") {
@@ -1139,9 +1139,14 @@ if (/Mobi/.test(navigator.userAgent)) {
                 $('#arrow').removeClass('hide-arrow');
             }
         } else { // If page is not a deck
-            if ($(event.target).is('.card')) {
-                console.log('Hover on link');
-                $('#cat-cursor').addClass('cat-cursor-on-button');
+            if ($(event.target).closest('.card').length > 0) {
+                console.log('Hover on card in home');
+                $('#cat-cursor').addClass('open-cursor');
+                $('#cat-cursor').removeClass('cat-cursor-invisible');
+                $('#cat-cursor').removeClass('prev-cursor');
+                $('#cat-cursor').removeClass('next-cursor');
+                $('#arrow').removeClass('hide-arrow');
+
                 return;
             } else {
                 $('#cat-cursor').removeClass('cat-cursor-on-button');

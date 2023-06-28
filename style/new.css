@@ -876,6 +876,13 @@ a.instagram-link {
         transition: all 0.2s ease-in-out;
     }
 
+    .open-cursor {
+        width: 70px; /* Double the border-radius value */
+        height: 70px; /* Double the border-radius value */
+        padding: 0;
+        border-radius: 50%;
+    }
+
     .next-cursor {
         width: 70px; /* Double the border-radius value */
         height: 70px; /* Double the border-radius value */
@@ -899,6 +906,10 @@ a.instagram-link {
     .next-cursor .cat-cursor-text, .prev-cursor .cat-cursor-text, .cat-cursor-invisible .cat-cursor-text {
         opacity: 0;
         width: 0%;
+    }
+
+    .open-cursor img {
+        rotate: 0deg;
     }
 
     .next-cursor img {
