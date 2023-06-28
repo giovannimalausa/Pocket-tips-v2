@@ -427,6 +427,7 @@ if (/Mobi/.test(navigator.userAgent)) {
         collectCards_desktop_TL.add('center', 1.25);
         collectCards_desktop_TL.to($('.barra-in-alto-espansa'), {opacity: 1, top: 0, height: '85px'}, 'center');
         collectCards_desktop_TL.fromTo($('.animatedLogoContainer'), {width: '456px', height: '53px'}, {'margin-left': '0px', width: '275px', height: '32px'}, 'center');
+        collectCards_desktop_TL.fromTo($('.menu-button'), {opacity: 0}, {opacity: 1}, 'center');
         collectCards_desktop_TL.to(pinkCard, {x: -outer_X, y: outer_Y, rotate: -outer_deg}, 'center');
         collectCards_desktop_TL.to(redCard, {x: -inner_X, y: inner_Y, rotate: -inner_deg}, 'center');
         collectCards_desktop_TL.to(blueCard, {x: center_X, y: center_Y}, 'center');
@@ -1095,37 +1096,41 @@ if (/Mobi/.test(navigator.userAgent)) {
         });
 
 
-        // Custom cursor definition
-        $(document).on('mousemove', function(event) {
-            let cursorOffsetX = $('.custom-cursors').width() / 2;
-            let cursorOffsetY = $('.custom-cursors').height() / 2;
-            $('.custom-cursors').css('left', event.clientX - cursorOffsetX + 'px');
-            $('.custom-cursors').css('top', event.clientY - cursorOffsetY + 'px');
-        });
+        
+    }
 
-        // Custom cursor on hover 
-        $('.wrapper').mousemove(function hoverOnWrapper() {
-            var cursorX = event.pageX;
-            var windowWidth = $(window).width();
-            var halfWindowWidth = windowWidth / 2;
+    // Custom cursor definition
+    $(document).on('mousemove', function(event) {
+        let cursorOffsetX = $('.custom-cursors').width() / 2;
+        let cursorOffsetY = $('.custom-cursors').height() / 2;
+        $('.custom-cursors').css('left', event.clientX - cursorOffsetX + 'px');
+        $('.custom-cursors').css('top', event.clientY - cursorOffsetY + 'px');
+    });
 
-            // Check if the mouse is hovering a div with class "single-card-wrapper"
-            if ($(event.target).parents().is(".clickable")) {
-                // Mouse is hovering a div with class "single-card-wrapper"
-                $('#cat-cursor').removeClass('next-cursor');
-                $('#cat-cursor').removeClass('prev-cursor');
-                $('#cat-cursor').removeClass('cat-cursor-invisible');
-                $('#arrow').removeClass('hide-arrow');
-                return; // Do nothing and exit the event handler
-            }
+    // Custom cursor on hover 
+    $('.wrapper').mousemove(function hoverOnWrapper() {
+        var cursorX = event.pageX;
+        var windowWidth = $(window).width();
+        var halfWindowWidth = windowWidth / 2;
 
+        // Check if the mouse is hovering a div with class "single-card-wrapper"
+        if ($(event.target).parents().is(".clickable")) {
+            // Mouse is hovering a div with class "single-card-wrapper"
+            $('#cat-cursor').removeClass('next-cursor');
+            $('#cat-cursor').removeClass('prev-cursor');
+            $('#cat-cursor').removeClass('cat-cursor-invisible');
+            $('#arrow').removeClass('hide-arrow');
+            return; // Do nothing and exit the event handler
+        }
+
+        if ($('meta[name="pageType"]').attr('content') === 'deck') { // If page is a deck
             if (cursorX < halfWindowWidth) {
                 // Cursor is on the left half of the window
                 $('#cat-cursor').addClass('prev-cursor');
                 $('#cat-cursor').removeClass('cat-cursor-invisible');
                 $('#cat-cursor').removeClass('next-cursor');
                 $('#arrow').removeClass('hide-arrow');
-
+    
             } else {
                 // Cursor is on the right half of the window
                 $('#cat-cursor').addClass('next-cursor');
@@ -1133,79 +1138,86 @@ if (/Mobi/.test(navigator.userAgent)) {
                 $('#cat-cursor').removeClass('prev-cursor');
                 $('#arrow').removeClass('hide-arrow');
             }
-        });
-
-        $('.barra-in-alto').on('mousemove', function hoverOnBarraInAlto() {
-            console.log('Hover on barra in alto');
-            if ($(event.target).is('[class*=link]')) {
-                // console.log('Hover on link');
+        } else { // If page is not a deck
+            if ($(event.target).is('.card')) {
+                console.log('Hover on link');
                 $('#cat-cursor').addClass('cat-cursor-on-button');
                 return;
-            }
-            $('#cat-cursor').addClass('cat-cursor-invisible');
-            $('#cat-cursor').removeClass('cat-cursor-on-button');
-            $('#cat-cursor').removeClass('next-cursor');
-            $('#cat-cursor').removeClass('prev-cursor');
-            $('#arrow').addClass('hide-arrow');
-        });
-
-        $('.menu-link').click(function() {
-            console.log('Click on menu link');
-            $('.fullpage-menu').toggleClass('showmenu');
-        });
-
-        $('.fullpage-menu').mousemove(function() {
-            console.log('Hover on menu');
-            if ($(event.target).is('[class*=link]')) {
-                // console.log('Hover on link');
-                $('#cat-cursor').addClass('cat-cursor-on-button');
-                return;
-            }
-            $('#cat-cursor').addClass('cat-cursor-invisible');
-            $('#cat-cursor').removeClass('cat-cursor-on-button');
-            $('#cat-cursor').removeClass('next-cursor');
-            $('#cat-cursor').removeClass('prev-cursor');
-            $('#arrow').addClass('hide-arrow');
-        });
-
-        // Manage clicks
-        $('.wrapper').click(function() {
-            var cursorX = event.pageX;
-            var windowWidth = $(window).width();
-            var halfWindowWidth = windowWidth / 2;
-
-            // Check if the mouse is clicks on a div with class "single-card-wrapper"
-            if ($(event.target).parents().is(".clickable")) {
-
-                // Clicked on clickable card 
-                // NAVIGATION TO SINGLE PAGE GOES HERE
-                var clickableElement = $(event.target).parents('.clickable');
-                var index = clickableElement.index();
-                console.log('Index of the clickable element:', index);
-                
-                
-                // generate the URL of the article combining two variables to get the full name of the variable containing the URL
-                let url = 'https://pockettips.it/tips/' + deck_color + '-tip-' + index;
-                console.log('opening URL:', url);
-                window.open(url, '_self');
-
-                return; // Exit the event handler
-            }
-        
-            if (cursorX < halfWindowWidth) {
-                // Cursor is on the left half of the window
-                console.log('Click on left');
-                navigateLeft();
             } else {
-                // Cursor is on the right half of the window
-                console.log('Click on right');
-                navigateRight();
-            }
-        });
+                $('#cat-cursor').removeClass('cat-cursor-on-button');
+            }    
+        }
 
         
+    });
 
-    }
+    $('.barra-in-alto').on('mousemove', function hoverOnBarraInAlto() {
+        console.log('Hover on barra in alto');
+        if ($(event.target).is('[class*=link]') || $(event.target).closest('a').length > 0) {
+            // console.log('Hover on link');
+            $('#cat-cursor').addClass('cat-cursor-on-button');
+            return;
+        }
+        $('#cat-cursor').addClass('cat-cursor-invisible');
+        $('#cat-cursor').removeClass('cat-cursor-on-button');
+        $('#cat-cursor').removeClass('next-cursor');
+        $('#cat-cursor').removeClass('prev-cursor');
+        $('#arrow').addClass('hide-arrow');
+    });
+
+    $('.menu-link').click(function() {
+        console.log('Click on menu link');
+        $('.fullpage-menu').toggleClass('showmenu');
+    });
+
+    $('.fullpage-menu').mousemove(function() {
+        console.log('Hover on menu');
+        if ($(event.target).is('[class*=link]')) {
+            // console.log('Hover on link');
+            $('#cat-cursor').addClass('cat-cursor-on-button');
+            return;
+        }
+        $('#cat-cursor').addClass('cat-cursor-invisible');
+        $('#cat-cursor').removeClass('cat-cursor-on-button');
+        $('#cat-cursor').removeClass('next-cursor');
+        $('#cat-cursor').removeClass('prev-cursor');
+        $('#arrow').addClass('hide-arrow');
+    });
+
+    // Manage clicks
+    $('.wrapper').click(function() {
+        var cursorX = event.pageX;
+        var windowWidth = $(window).width();
+        var halfWindowWidth = windowWidth / 2;
+
+        // Check if the mouse is clicks on a div with class "single-card-wrapper"
+        if ($(event.target).parents().is(".clickable")) {
+
+            // Clicked on clickable card 
+            // NAVIGATION TO SINGLE PAGE GOES HERE
+            var clickableElement = $(event.target).parents('.clickable');
+            var index = clickableElement.index();
+            console.log('Index of the clickable element:', index);
+            
+            
+            // generate the URL of the article combining two variables to get the full name of the variable containing the URL
+            let url = 'https://pockettips.it/tips/' + deck_color + '-tip-' + index;
+            console.log('opening URL:', url);
+            window.open(url, '_self');
+
+            return; // Exit the event handler
+        }
+    
+        if (cursorX < halfWindowWidth) {
+            // Cursor is on the left half of the window
+            console.log('Click on left');
+            navigateLeft();
+        } else {
+            // Cursor is on the right half of the window
+            console.log('Click on right');
+            navigateRight();
+        }
+    });
 
     // FINE DESKTOP
 }

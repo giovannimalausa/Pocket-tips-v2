@@ -614,7 +614,7 @@ a.instagram-link {
         background-color: var(--green-primary);
     }
 
-    .black-deck .menu-link::after {
+    .black-deck .menu-link::after, .home-body .menu-link::after {
         background-color: var(--black-secondary);
     }
       
@@ -813,7 +813,7 @@ a.instagram-link {
         transition: all 0.2s ease-in-out;
     }
 
-    .black-deck .custom-cursors .cat-cursor {
+    .black-deck .custom-cursors .cat-cursor, .home-body .custom-cursors .cat-cursor {
         color: var(--black-primary);
     }
 
@@ -856,7 +856,7 @@ a.instagram-link {
         background-color: var(--red-primary);
     }
 
-    .black-deck .cat-cursor {
+    .black-deck .cat-cursor, .home-body .cat-cursor {
         background-color: var(--black-secondary);
     }
 
