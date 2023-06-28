@@ -5,11 +5,15 @@
 <div class="barra-in-alto">
     <div class="logo-container">
         <a href="https://pockettips.it" target="_parent">
-            <img src="../res/logo/yellow-logo-dark.svg" alt="" class="logo">
+            <img src="../../res/logo/on-light-logos/greenLogo.svg" alt="" class="logo logo-on-light" id="logo-img-on-light">
+            <img src="../../res/logo/on-dark-logos/greenLogo.svg" alt="" class="logo logo-on-dark logo-hidden" id="logo-img-on-dark">
         </a>
     </div>
     <div class="menu-button">
-        <a class="menu-link">Menu</a>
+        <a class="menu-link menu-text">Menu</a>
+        <a class="menu-hamburger">
+            <img class="menu-hamburger-icon" id="menu-hamburger-icon" src="../../res/icons/hamburger-menu.svg">
+        </a>
     </div>
 </div>
 
@@ -17,22 +21,22 @@
 <div class="fullpage-menu">
     <ul class="menu-link-wrapper">
         <li>
-            <a href="blue-deck.html" class="blue-link">Scopri</a>
+            <a href="https://pockettips.it/decks/blue-deck.html" class="blue-link">Scopri</a>
         </li>
         <li>
-            <a href="red-deck.html" class="red-link">Crea</a>
+            <a href="https://pockettips.it/decks/red-deck.html" class="red-link">Crea</a>
         </li>
         <li>
-            <a href="pink-deck.html" class="pink-link">Esplora</a>
+            <a href="https://pockettips.it/decks/pink-deck.html" class="pink-link">Esplora</a>
         </li>
         <li>
-            <a href="green-deck.html" class="green-link">Risparmia</a>
+            <a href="https://pockettips.it/decks/green-deck.html" class="green-link">Risparmia</a>
         </li>
         <li>
-            <a href="yellow-deck.html" class="yellow-link">Assapora</a>
+            <a href="https://pockettips.it/decks/yellow-deck.html" class="yellow-link">Assapora</a>
         </li>
         <li>
-            <a href="#" class="about-us-link">About Us</a>
+            <a href="https://pockettips.it/decks/about-us.html" class="about-us-link">About Us</a>
         </li>
     </ul>
     <a href="https://www.instagram.com/_pocket_tips/" class="instagram-link">Instagram</a>
@@ -50,11 +54,11 @@
 <!-- CSS -->
 <style>
     /* Font */
-    @font-face {
+    /* @font-face {
         font-family: 'PP Fragment Variable';
         src: url(../font/PPFragment-Variable.ttf);
         font-weight: 100 900;
-    }
+    } */
 
     /* Variabili */
     :root {
@@ -86,8 +90,6 @@
 
         /* Card variables */
         --card-border-radius: 40px;
-
-        cursor: none;
     }
 
     a {
@@ -102,34 +104,89 @@
         display: flex;
         margin: 0 8px;
         width: 100vw;
-        height: 100px;
-        justify-content: center;
+        height: 85px;
+        justify-content: space-between;
         align-items: center;
-        z-index: 20;
-        /* background-color: aqua; */
+        z-index: 50;
         box-sizing: border-box;
         margin: 0;
+        padding: 0 5vw;
+
+        background-color: var(--green-secondary);
+
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .transparent-background {
+        background-color: transparent;
+    }
+
+    .barra-in-alto > * {
+        pointer-events: all;
+    }
+
+    .logo-container {
+        position: relative;
+        height: 25px;
+        width: 214px;
     }
 
     .logo {
-        height: 30px;
+        position: absolute;
+    }
+
+    #logo-img-on-light, #logo-img-on-dark {
+        height: 25px;
+        width: 214px;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .logo-hidden {
+        opacity: 0;
     }
 
     .menu-button {
+        display: block;
+    }
+
+    .menu-text {
         display: none;
     }
 
+    #menu-hamburger-icon {
+        height: 20px;
+        width: 20px;
+        filter: invert(0);
+        transition: filter 0.3s ease-in-out;
+    }
+
+    .inverted {
+        filter: invert(1);
+    }
+
+
+
     @media (min-width: 768px) {
-        .barra-in-alto {
-            justify-content: space-between;
-            height: 100px;
-            padding-left: 5vw;
-            padding-right: 5vw;
-            z-index: 50;
+
+        :root {
+            cursor: none;
         }
+
+        .barra-in-alto {
+            height: 100px;
+            background-color: transparent;
+        }
+
+        #menu-hamburger-icon {
+        display: none;
+    }
 
         .menu-button {
             display: flex;
+        }
+
+        .menu-text {
+            display: block;
         }
 
         .menu-link {
@@ -187,7 +244,7 @@
             font-size: 18px;
             font-variation-settings: "wght" 550, "ital" 0, "SRFF" 0;
             color: red;
-            background-color: #4E7BBE;
+            background-color: var(--green-primary);
             border-radius: 16px;
             gap: 4px;
             min-height: 35px;
@@ -265,13 +322,13 @@
         justify-content: center;
         align-items: center;
         position: fixed;
-        top: -100vh;
+        top: -150vh;
         left: 0;
-        z-index: 49;
+        z-index: 10;
         background-color: #1F2023;
         width: 100vw;
-        height: 100vh;
-        transition: all .5s ease-in-out;
+        height: 100dvh;
+        transition: top .5s ease-in-out;
     }
 
     .showmenu {
@@ -283,7 +340,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 16px;
+        gap: 12px;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -292,7 +349,7 @@
     .fullpage-menu a {
         text-decoration: none;
         font-family: 'PP Fragment Variable';
-        font-size: 60px;
+        font-size: 24px;
         font-variation-settings: "wght" 650, "ital" 0, "SRFF" 0;
         transition: all .2s ease-in-out;
         padding: 10px;
@@ -329,7 +386,7 @@
 
     a.instagram-link {
         color: white;
-        font-size: 30px;
+        font-size: 16px;
         position: absolute;
         bottom: 30px;
         font-variation-settings: "wght" 350, "ital" 0, "SRFF" 0;
@@ -381,6 +438,39 @@
         background-color: white; /* Set the desired line color */
     }
 
+    @media (min-width: 768px) {
+        .fullpage-menu {
+            flex-direction: column;
+            z-index: 49;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .fullpage-menu a {
+            font-size: 45px;
+        }
+
+        a.instagram-link {
+            font-size: 30px;
+        }
+    }
+
+    @media (min-width: 1450px) {
+        .fullpage-menu ul {
+            gap: 16px;
+        }
+    }
+
+    @media (min-width: 1920px) {
+
+        .fullpage-menu a {
+            font-size: 60px;
+        }
+
+        a.instagram-link {
+            font-size: 30px;
+        }
+    }
 
 
 
@@ -390,10 +480,22 @@
 <script>
     // Custom cursor definition
     $(document).on('mousemove', function(event) {
-            let cursorOffsetX = $('.custom-cursors').width() / 2;
-            let cursorOffsetY = $('.custom-cursors').height() / 2;
-            $('.custom-cursors').css('left', event.clientX - cursorOffsetX + 'px');
-            $('.custom-cursors').css('top', event.clientY - cursorOffsetY + 'px');
+        let cursorOffsetX = $('.custom-cursors').width() / 2;
+        let cursorOffsetY = $('.custom-cursors').height() / 2;
+        $('.custom-cursors').css('left', event.clientX - cursorOffsetX + 'px');
+        $('.custom-cursors').css('top', event.clientY - cursorOffsetY + 'px');
+
+        if ($(event.target).is('a') || $(event.target).closest('a').length > 0) {
+            // console.log('Hover on link');
+            $('#cat-cursor').addClass('cat-cursor-on-button');
+            console.log("On link");
+        return;
+        }
+        $('#cat-cursor').addClass('cat-cursor-invisible');
+        $('#cat-cursor').removeClass('cat-cursor-on-button');
+        $('#cat-cursor').removeClass('next-cursor');
+        $('#cat-cursor').removeClass('prev-cursor');
+        $('#arrow').addClass('hide-arrow');
     });
 
     $('.barra-in-alto').on('mousemove', function hoverOnBarraInAlto() {
@@ -413,20 +515,32 @@
     $('.menu-link').click(function() {
             console.log('Click on menu link');
             $('.fullpage-menu').toggleClass('showmenu');
-        });
+            $('#logo-img-on-dark').toggleClass('logo-hidden');
+            $('.menu-link').toggleClass('inverted');
 
-        $('.fullpage-menu').mousemove(function() {
-            console.log('Hover on menu');
-            if ($(event.target).is('[class*=link]')) {
-                // console.log('Hover on link');
-                $('#cat-cursor').addClass('cat-cursor-on-button');
-                return;
-            }
-            $('#cat-cursor').addClass('cat-cursor-invisible');
-            $('#cat-cursor').removeClass('cat-cursor-on-button');
-            $('#cat-cursor').removeClass('next-cursor');
-            $('#cat-cursor').removeClass('prev-cursor');
-            $('#arrow').addClass('hide-arrow');
-        });
+    });
+
+    $('.menu-hamburger').click(function() {
+        console.log('Click on menu hamburger');
+        $('.fullpage-menu').toggleClass('showmenu');
+        $('#logo-img-on-dark').toggleClass('logo-hidden');
+        $('.menu-hamburger').toggleClass('inverted');
+        $('.barra-in-alto').toggleClass('transparent-background');
+    });
+
+    $('.fullpage-menu').mousemove(function() {
+        console.log('Hover on menu');
+        if ($(event.target).is('[class*=link]')) {
+            // console.log('Hover on link');
+            $('#cat-cursor').addClass('cat-cursor-on-button');
+            return;
+        }
+        $('#cat-cursor').addClass('cat-cursor-invisible');
+        $('#cat-cursor').removeClass('cat-cursor-on-button');
+        $('#cat-cursor').removeClass('next-cursor');
+        $('#cat-cursor').removeClass('prev-cursor');
+        $('#arrow').addClass('hide-arrow');
+    });
+
 </script>
 

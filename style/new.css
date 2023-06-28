@@ -20,6 +20,9 @@
     --blue-primary: #4E7BBE;
     --blue-secondary: #F3F7FF;
 
+    --black-primary: #1F2023;
+    --black-secondary: #FFFFFF;
+
     /* Shadows */
     --shadow-1: 0px 4px 5px rgba(0, 0, 0, 0.25);
 
@@ -27,6 +30,7 @@
     padding: 0;
 
     /* Card variables */
+    --card-border-radius-mobile: 24px;
     --card-border-radius: 40px;
 }
 
@@ -58,6 +62,21 @@ body {
     background-color: var(--dark-background);
 }
 
+body.black-deck {
+    background-color: var(--black-secondary);
+    animation: blackDeckBackgroundAnimation 3s forwards;
+
+}
+
+@keyframes blackDeckBackgroundAnimation {
+    60% {
+        background-color: var(--black-secondary);
+    }
+    100% {
+        background-color: var(--black-primary);
+    }
+}
+
 a {
     cursor: none;
 }
@@ -72,11 +91,28 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     left: 0;
     display: flex;
     margin: 0 8px;
-    width: 100%;
-    height: 100px;
-    justify-content: center;
+    width: 100vw;
+    height: 85px;
+    justify-content: space-between;
     align-items: center;
-    z-index: 20;
+    z-index: 50;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 5vw;
+
+    background-color: var(--secondary-color);
+
+    transition: background-color 0.3s ease-in-out;
+}
+
+.transparent-background {
+    background-color: transparent;
+}
+
+.logo-container, .animatedLogoContainer {
+    position: relative;
+    height: 20px;
+    width: 170px;
 }
 
 .motto-container {
@@ -87,8 +123,136 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     display: none;
 }
 
-.animatedLogoContainer {
-    width: 300px;
+/* BREAK */
+
+.fullpage-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: -150vh;
+    left: 0;
+    z-index: 10;
+    background-color: #1F2023;
+    width: 100vw;
+    height: 100vh;
+    transition: top .5s ease-in-out;
+}
+
+.showmenu {
+    top: 0;
+}
+
+.fullpage-menu ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.fullpage-menu a {
+    text-decoration: none;
+    font-family: 'PP Fragment Variable';
+    font-size: 24px;
+    font-variation-settings: "wght" 650, "ital" 0, "SRFF" 0;
+    transition: all .2s ease-in-out;
+    padding: 10px;
+    position: relative;
+    z-index: 3;
+    text-transform: uppercase;
+}
+
+.fullpage-menu a:hover {
+    text-decoration: none;
+    font-family: 'PP Fragment Variable';
+    font-variation-settings: "wght" 650, "ital" 100, "SRFF" 100;
+}
+
+.green-link {
+    color: var(--green-primary);
+}
+
+.pink-link {
+    color: var(--pink-primary);
+}
+
+.blue-link {
+    color: var(--blue-primary);
+}
+
+.yellow-link {
+    color: var(--yellow-primary);
+}
+
+.red-link {
+    color: var(--red-primary);
+}
+
+.black-link {
+    color: var(--black-secondary);
+}
+
+a.instagram-link {
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    bottom: 30px;
+    font-variation-settings: "wght" 350, "ital" 0, "SRFF" 0;
+}
+
+.about-us-link {
+    color: white;
+}
+
+.yellow-link::after, .red-link::after, .blue-link::after, .pink-link::after, .green-link::after, .black-link::after, .instagram-link::after, .about-us-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 8px; /* Adjust this value as needed */
+    width: calc(100% - 20px); /* Adjust this value as needed */
+    margin-left: 10px;
+    height: 3px;
+    transform: scaleX(0);
+    transition: transform 0.2s ease-in-out;
+    z-index: 10;
+
+}
+  
+.yellow-link:hover::after, .red-link:hover::after, .blue-link:hover::after, .pink-link:hover::after, .green-link:hover::after, .black-link:hover::after, .instagram-link:hover::after, .about-us-link:hover::after {
+    transform: scaleX(1);
+}
+
+.yellow-link::after {
+    background-color: var(--yellow-primary); /* Set the desired line color */
+}
+
+.green-link::after {
+    background-color: var(--green-primary); /* Set the desired line color */
+}
+
+.pink-link::after {
+    background-color: var(--pink-primary); /* Set the desired line color */
+}
+
+.blue-link::after {
+    background-color: var(--blue-primary); /* Set the desired line color */
+}
+
+.red-link::after {
+    background-color: var(--red-primary); /* Set the desired line color */
+}
+
+.black-link::after {
+    background-color: var(--black-secondary); /* Set the desired line color */
+}
+
+.instagram-link::after, .about-us-link::after {
+    background-color: white; /* Set the desired line color */
 }
 
 .wrapper {
@@ -120,9 +284,9 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    min-width: 250px; /* former 180px */
-    height: 375px;
-    border-radius: var(--card-border-radius);
+    min-width: 200px; /* former 250px */
+    height: 300px; /* former 375px */
+    border-radius: var(--card-border-radius-mobile);
     box-shadow: var(--shadow-1);
     overflow: hidden;
     position: relative;
@@ -151,6 +315,10 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     background-color: var(--blue-primary);
 }
 
+.black-card {
+    background-color: var(--black-primary);
+}
+
 .cat-title-wrapper {
     position: absolute;
     width: 100%;
@@ -160,7 +328,7 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
 
 .cat-title {
     position: relative;
-    bottom: 280px;
+    bottom: 220px;
     margin: 0;
     padding: 0;
     
@@ -249,7 +417,7 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
 
 .cat-title-in-deck {
     position: relative;
-    bottom: 280px;
+    bottom: 220px;
     margin: 0;
     z-index: 100;
     display: block;
@@ -374,10 +542,12 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
         padding: 4px;
         opacity: 0.7;
         transition: all 0.2s ease-in-out;
+        font-variation-settings: "wght" 550, "ital" 0, "SRFF" 0;
     }
 
     .menu-link:hover {
         opacity: 1;
+        font-variation-settings: "wght" 750, "ital" 100, "SRFF" 100;
     }
 
     .menu-link::after {
@@ -412,9 +582,28 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     .green-deck .menu-link::after {
         background-color: var(--green-primary);
     }
+
+    .black-deck .menu-link::after {
+        background-color: var(--black-secondary);
+    }
       
     .menu-link:hover::after {
         transform: scaleX(1);
+    }
+
+    .fullpage-menu {
+        flex-direction: column;
+        z-index: 49;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .fullpage-menu a {
+        font-size: 45px;
+    }
+
+    a.instagram-link {
+        font-size: 30px;
     }
 
     .deck-page {
@@ -458,11 +647,12 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
 
     .card {
         position: absolute;
-        width: 250;
+        width: 250px;
         height: 375px;
         max-height: 375px;
         margin: 0;
         z-index: 10;
+        border-radius: var(--card-border-radius);
     }
 
     .starter {
@@ -470,24 +660,28 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
         scale: 1.25;
     }
 
-    .pink-card .vector-wrapper{
+    .pink-card .vector-wrapper {
         background-color: var(--pink-primary);
     }
 
-    .blue-card .vector-wrapper{
+    .blue-card .vector-wrapper {
         background-color: var(--blue-primary);
     }
 
-    .yellow-card .vector-wrapper{
+    .yellow-card .vector-wrapper {
         background-color: var(--yellow-primary);
     }
 
-    .green-card .vector-wrapper{
+    .green-card .vector-wrapper {
         background-color: var(--green-primary);
     }
 
-    .red-card .vector-wrapper{
+    .red-card .vector-wrapper {
         background-color: var(--red-primary);
+    }
+
+    .black-card .vector-wrapper {
+        background-color: var(--black-primary);
     }
 
     .vector-wrapper {
@@ -588,6 +782,10 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
         transition: all 0.2s ease-in-out;
     }
 
+    .black-deck .custom-cursors .cat-cursor {
+        color: var(--black-primary);
+    }
+
     .cat-cursor-invisible {
         width: 0 !important;
         min-height: 0 !important;
@@ -625,6 +823,10 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
 
     .red-deck .cat-cursor {
         background-color: var(--red-primary);
+    }
+
+    .black-deck .cat-cursor {
+        background-color: var(--black-secondary);
     }
 
     .cat-up-right-arrow {
@@ -678,6 +880,16 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
 }
 
 @media (min-width: 1450px) {
+
+    .logo-container, .animatedLogoContainer {
+        width: 214px;
+        height: 25px;
+    }
+
+    .fullpage-menu ul {
+        gap: 16px;
+    }
+
     .card {
         position: absolute;
         width: 300px;
@@ -716,126 +928,17 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     }
 }
 
-/* BREAK */
+@media (min-width: 1950px) {
+    .fullpage-menu a {
+        font-size: 60px;
+    }
 
-.fullpage-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: -100vh;
-    left: 0;
-    z-index: 49;
-    background-color: #1F2023;
-    width: 100vw;
-    height: 100vh;
-    transition: all .5s ease-in-out;
-}
+    a.instagram-link {
+        font-size: 30px;
+    }
 
-.showmenu {
-    top: 0;
-}
-
-.fullpage-menu ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.fullpage-menu a {
-    text-decoration: none;
-    font-family: 'PP Fragment Variable';
-    font-size: 60px;
-    font-variation-settings: "wght" 650, "ital" 0, "SRFF" 0;
-    transition: all .2s ease-in-out;
-    padding: 10px;
-    position: relative;
-    z-index: 3;
-    text-transform: uppercase;
-}
-
-.fullpage-menu a:hover {
-    text-decoration: none;
-    font-family: 'PP Fragment Variable';
-    font-variation-settings: "wght" 650, "ital" 100, "SRFF" 100;
-}
-
-.green-link {
-    color: var(--green-primary);
-}
-
-.pink-link {
-    color: var(--pink-primary);
-}
-
-.blue-link {
-    color: var(--blue-primary);
-}
-
-.yellow-link {
-    color: var(--yellow-primary);
-}
-
-.red-link {
-    color: var(--red-primary);
-}
-
-a.instagram-link {
-    color: white;
-    font-size: 30px;
-    position: absolute;
-    bottom: 30px;
-    font-variation-settings: "wght" 350, "ital" 0, "SRFF" 0;
-}
-
-.about-us-link {
-    color: white;
-}
-
-.yellow-link::after, .red-link::after, .blue-link::after, .pink-link::after, .green-link::after, .instagram-link::after, .about-us-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 8px; /* Adjust this value as needed */
-    width: calc(100% - 20px); /* Adjust this value as needed */
-    margin-left: 10px;
-    height: 3px;
-    transform: scaleX(0);
-    transition: transform 0.2s ease-in-out;
-    z-index: 10;
-
-}
-  
-.yellow-link:hover::after, .red-link:hover::after, .blue-link:hover::after, .pink-link:hover::after, .green-link:hover::after, .instagram-link:hover::after, .about-us-link:hover::after {
-    transform: scaleX(1);
-}
-
-.yellow-link::after {
-    background-color: var(--yellow-primary); /* Set the desired line color */
-}
-
-.green-link::after {
-    background-color: var(--green-primary); /* Set the desired line color */
-}
-
-.pink-link::after {
-    background-color: var(--pink-primary); /* Set the desired line color */
-}
-
-.blue-link::after {
-    background-color: var(--blue-primary); /* Set the desired line color */
-}
-
-.red-link::after {
-    background-color: var(--red-primary); /* Set the desired line color */
-}
-
-.instagram-link::after, .about-us-link::after {
-    background-color: white; /* Set the desired line color */
+    .logo-container, .animatedLogoContainer {
+        width: 320px;
+        height: 39px;
+    }
 }

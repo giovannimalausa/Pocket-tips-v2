@@ -1,0 +1,546 @@
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<div class="barra-in-alto">
+    <div class="logo-container">
+        <a href="https://pockettips.it" target="_parent">
+            <img src="../../res/logo/on-light-logos/pinkLogo.svg" alt="" class="logo logo-on-light" id="logo-img-on-light">
+            <img src="../../res/logo/on-dark-logos/pinkLogo.svg" alt="" class="logo logo-on-dark logo-hidden" id="logo-img-on-dark">
+        </a>
+    </div>
+    <div class="menu-button">
+        <a class="menu-link menu-text">Menu</a>
+        <a class="menu-hamburger">
+            <img class="menu-hamburger-icon" id="menu-hamburger-icon" src="../../res/icons/hamburger-menu.svg">
+        </a>
+    </div>
+</div>
+
+<!-- Full page menu -->
+<div class="fullpage-menu">
+    <ul class="menu-link-wrapper">
+        <li>
+            <a href="https://pockettips.it/decks/blue-deck.html" class="blue-link">Scopri</a>
+        </li>
+        <li>
+            <a href="https://pockettips.it/decks/red-deck.html" class="red-link">Crea</a>
+        </li>
+        <li>
+            <a href="https://pockettips.it/decks/pink-deck.html" class="pink-link">Esplora</a>
+        </li>
+        <li>
+            <a href="https://pockettips.it/decks/green-deck.html" class="green-link">Risparmia</a>
+        </li>
+        <li>
+            <a href="https://pockettips.it/decks/yellow-deck.html" class="yellow-link">Assapora</a>
+        </li>
+        <li>
+            <a href="https://pockettips.it/decks/about-us.html" class="about-us-link">About Us</a>
+        </li>
+    </ul>
+    <a href="https://www.instagram.com/_pocket_tips/" class="instagram-link">Instagram</a>
+</div>
+<!-- Fine Full page menu -->
+
+<!-- Custom cursors -->
+<div class="custom-cursors">
+    <div class="cat-cursor cat-cursor-invisible" id="cat-cursor">
+    </div>
+</div>
+<!-- Fine custom cursors -->
+
+
+<!-- CSS -->
+<style>
+    /* Font */
+    /* @font-face {
+        font-family: 'PP Fragment Variable';
+        src: url(../font/PPFragment-Variable.ttf);
+        font-weight: 100 900;
+    } */
+
+    /* Variabili */
+    :root {
+        /* Colors */
+        --dark-background: #1F2023;
+        --light-background: #FFFFFF;
+
+        --yellow-primary: #F2BE58;
+        --yellow-secondary: #FFFAEA;
+        --yellow-tertiary: #fffaea8b;
+
+        --green-primary: #72C0A2;
+        --green-secondary: #F6FFFC;
+
+        --red-primary: #ED6D44;
+        --red-secondary: #FDF4EF;
+
+        --pink-primary: #F3A0B9;
+        --pink-secondary: #FFF3F8;
+
+        --blue-primary: #4E7BBE;
+        --blue-secondary: #F3F7FF;
+
+        /* Shadows */
+        --shadow-1: 0px 4px 5px rgba(0, 0, 0, 0.25);
+
+        margin: 0;
+        padding: 0;
+
+        /* Card variables */
+        --card-border-radius: 40px;
+    }
+
+    a {
+        cursor: none;
+    }
+
+    /* Barra in alto */
+    .barra-in-alto {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        margin: 0 8px;
+        width: 100vw;
+        height: 85px;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 50;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0 5vw;
+
+        background-color: var(--pink-secondary);
+
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .transparent-background {
+        background-color: transparent;
+    }
+
+    .barra-in-alto > * {
+        pointer-events: all;
+    }
+
+    .logo-container {
+        position: relative;
+        height: 25px;
+        width: 214px;
+    }
+
+    .logo {
+        position: absolute;
+    }
+
+    #logo-img-on-light, #logo-img-on-dark {
+        height: 25px;
+        width: 214px;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .logo-hidden {
+        opacity: 0;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .menu-text {
+        display: none;
+    }
+
+    #menu-hamburger-icon {
+        height: 20px;
+        width: 20px;
+        filter: invert(0);
+        transition: filter 0.3s ease-in-out;
+    }
+
+    .inverted {
+        filter: invert(1);
+    }
+
+
+
+    @media (min-width: 768px) {
+
+        :root {
+            cursor: none;
+        }
+
+        .barra-in-alto {
+            height: 100px;
+            background-color: transparent;
+        }
+
+        #menu-hamburger-icon {
+        display: none;
+    }
+
+        .menu-button {
+            display: flex;
+        }
+
+        .menu-text {
+            display: block;
+        }
+
+        .menu-link {
+            position: relative;
+            font-family: 'PP Fragment Variable';
+            font-variation-settings: "wght" 550, "ital" 0, "SRFF" 0;
+            font-size: 16px;
+            color: black;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            padding: 4px;
+            opacity: 0.7;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .menu-link:hover {
+            opacity: 1;
+        }
+
+        .menu-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px; /* Adjust this value as needed */
+            width: calc(100% - 8px); /* Adjust this value as needed */
+            margin-left: 4px;
+            height: 2px;
+            background-color: black; /* Set the desired line color */
+            transform: scaleX(0);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .menu-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        .custom-cursors {
+            display: block;
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .cat-cursor {
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4px 8px;
+            font-family: 'PP Fragment Variable';
+            font-size: 18px;
+            font-variation-settings: "wght" 550, "ital" 0, "SRFF" 0;
+            color: red;
+            background-color: var(--pink-primary);
+            border-radius: 16px;
+            gap: 4px;
+            min-height: 35px;
+            min-width: 35px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .cat-cursor-invisible {
+            width: 0 !important;
+            min-height: 0 !important;
+            min-width: 20px !important;
+            height: 20px;
+            gap: 0;
+            padding: 0;
+        }
+
+        .cat-cursor-on-button {
+            width: 0 !important;
+            min-height: 0 !important;
+            min-width: 10px !important;
+            height: 10px;
+            gap: 0;
+            padding: 0;
+            opacity: 0.5;
+        }
+
+        .cat-cursor img {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .next-cursor {
+            width: 70px; /* Double the border-radius value */
+            height: 70px; /* Double the border-radius value */
+            padding: 0;
+            border-radius: 50%;
+        }
+
+        .cat-cursor-text {
+            transition: opacity 0.1s ease-in-out, width 0.2s ease-in-out;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .prev-cursor {
+            width: 70px; /* Double the border-radius value */
+            height: 70px; /* Double the border-radius value */
+            padding: 0;
+            border-radius: 50%;
+        }
+
+        .next-cursor .cat-cursor-text, .prev-cursor .cat-cursor-text, .cat-cursor-invisible .cat-cursor-text {
+            opacity: 0;
+            width: 0%;
+        }
+
+        .next-cursor img {
+            rotate: 45deg;
+        }
+
+        .prev-cursor img {
+            rotate: -135deg;
+        }
+
+        .hide-arrow {
+            opacity: 0;
+            width: 0;
+        }
+
+    }
+
+    /* Full page menu */
+    .fullpage-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: -150vh;
+        left: 0;
+        z-index: 10;
+        background-color: #1F2023;
+        width: 100vw;
+        height: 100dvh;
+        transition: top .5s ease-in-out;
+    }
+
+    .showmenu {
+        top: 0;
+    }
+
+    .fullpage-menu ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .fullpage-menu a {
+        text-decoration: none;
+        font-family: 'PP Fragment Variable';
+        font-size: 24px;
+        font-variation-settings: "wght" 650, "ital" 0, "SRFF" 0;
+        transition: all .2s ease-in-out;
+        padding: 10px;
+        position: relative;
+        z-index: 3;
+        text-transform: uppercase;
+    }
+
+    .fullpage-menu a:hover {
+        text-decoration: none;
+        font-family: 'PP Fragment Variable';
+        font-variation-settings: "wght" 650, "ital" 100, "SRFF" 100;
+    }
+
+    .green-link {
+        color: var(--green-primary);
+    }
+
+    .pink-link {
+        color: var(--pink-primary);
+    }
+
+    .blue-link {
+        color: var(--blue-primary);
+    }
+
+    .yellow-link {
+        color: var(--yellow-primary);
+    }
+
+    .red-link {
+        color: var(--red-primary);
+    }
+
+    a.instagram-link {
+        color: white;
+        font-size: 16px;
+        position: absolute;
+        bottom: 30px;
+        font-variation-settings: "wght" 350, "ital" 0, "SRFF" 0;
+    }
+
+    .about-us-link {
+        color: white;
+    }
+
+    .yellow-link::after, .red-link::after, .blue-link::after, .pink-link::after, .green-link::after, .instagram-link::after, .about-us-link::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 8px; /* Adjust this value as needed */
+        width: calc(100% - 20px); /* Adjust this value as needed */
+        margin-left: 10px;
+        height: 3px;
+        transform: scaleX(0);
+        transition: transform 0.2s ease-in-out;
+        z-index: 10;
+
+    }
+    
+    .yellow-link:hover::after, .red-link:hover::after, .blue-link:hover::after, .pink-link:hover::after, .green-link:hover::after, .instagram-link:hover::after, .about-us-link:hover::after {
+        transform: scaleX(1);
+    }
+
+    .yellow-link::after {
+        background-color: var(--yellow-primary); /* Set the desired line color */
+    }
+
+    .green-link::after {
+        background-color: var(--green-primary); /* Set the desired line color */
+    }
+
+    .pink-link::after {
+        background-color: var(--pink-primary); /* Set the desired line color */
+    }
+
+    .blue-link::after {
+        background-color: var(--blue-primary); /* Set the desired line color */
+    }
+
+    .red-link::after {
+        background-color: var(--red-primary); /* Set the desired line color */
+    }
+
+    .instagram-link::after, .about-us-link::after {
+        background-color: white; /* Set the desired line color */
+    }
+
+    @media (min-width: 768px) {
+        .fullpage-menu {
+            flex-direction: column;
+            z-index: 49;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .fullpage-menu a {
+            font-size: 45px;
+        }
+
+        a.instagram-link {
+            font-size: 30px;
+        }
+    }
+
+    @media (min-width: 1450px) {
+        .fullpage-menu ul {
+            gap: 16px;
+        }
+    }
+
+    @media (min-width: 1920px) {
+
+        .fullpage-menu a {
+            font-size: 60px;
+        }
+
+        a.instagram-link {
+            font-size: 30px;
+        }
+    }
+
+
+
+</style>
+
+<!-- SCRIPT -->
+<script>
+    // Custom cursor definition
+    $(document).on('mousemove', function(event) {
+        let cursorOffsetX = $('.custom-cursors').width() / 2;
+        let cursorOffsetY = $('.custom-cursors').height() / 2;
+        $('.custom-cursors').css('left', event.clientX - cursorOffsetX + 'px');
+        $('.custom-cursors').css('top', event.clientY - cursorOffsetY + 'px');
+
+        if ($(event.target).is('a') || $(event.target).closest('a').length > 0) {
+            // console.log('Hover on link');
+            $('#cat-cursor').addClass('cat-cursor-on-button');
+            console.log("On link");
+        return;
+        }
+        $('#cat-cursor').addClass('cat-cursor-invisible');
+        $('#cat-cursor').removeClass('cat-cursor-on-button');
+        $('#cat-cursor').removeClass('next-cursor');
+        $('#cat-cursor').removeClass('prev-cursor');
+        $('#arrow').addClass('hide-arrow');
+    });
+
+    $('.barra-in-alto').on('mousemove', function hoverOnBarraInAlto() {
+        console.log('Hover on barra in alto');
+        if ($(event.target).is('[class*=link]')) {
+            // console.log('Hover on link');
+            $('#cat-cursor').addClass('cat-cursor-on-button');
+            return;
+        }
+        $('#cat-cursor').addClass('cat-cursor-invisible');
+        $('#cat-cursor').removeClass('cat-cursor-on-button');
+        $('#cat-cursor').removeClass('next-cursor');
+        $('#cat-cursor').removeClass('prev-cursor');
+        $('#arrow').addClass('hide-arrow');
+    });
+
+    $('.menu-link').click(function() {
+            console.log('Click on menu link');
+            $('.fullpage-menu').toggleClass('showmenu');
+            $('#logo-img-on-dark').toggleClass('logo-hidden');
+            $('.menu-link').toggleClass('inverted');
+
+    });
+
+    $('.menu-hamburger').click(function() {
+        console.log('Click on menu hamburger');
+        $('.fullpage-menu').toggleClass('showmenu');
+        $('#logo-img-on-dark').toggleClass('logo-hidden');
+        $('.menu-hamburger').toggleClass('inverted');
+        $('.barra-in-alto').toggleClass('transparent-background');
+    });
+
+    $('.fullpage-menu').mousemove(function() {
+        console.log('Hover on menu');
+        if ($(event.target).is('[class*=link]')) {
+            // console.log('Hover on link');
+            $('#cat-cursor').addClass('cat-cursor-on-button');
+            return;
+        }
+        $('#cat-cursor').addClass('cat-cursor-invisible');
+        $('#cat-cursor').removeClass('cat-cursor-on-button');
+        $('#cat-cursor').removeClass('next-cursor');
+        $('#cat-cursor').removeClass('prev-cursor');
+        $('#arrow').addClass('hide-arrow');
+    });
+
+</script>
+

@@ -106,52 +106,25 @@ updateVariablesOnResize();
 // Event listener for window resize
 $(window).resize(updateVariablesOnResize());
 
-// LINKS to ARTICLES ============================================================
-// greendeck
-let greenArticle_0 = 'https://www.polimi.it/' 
-let greenArticle_1 = 'https://www.designdellacomunicazione.polimi.it/en/ddc-eng/' 
-let greenArticle_2 = 'https://stackoverflow.com/questions/24077725/mobile-safari-sometimes-does-not-trigger-the-click-event' 
-let greenArticle_3 = 'https://www.polimi.it/' 
-let greenArticle_4 = 'https://www.polimi.it/' 
-let greenArticle_5 = 'https://www.polimi.it/' 
-let greenArticle_6 = 'https://www.polimi.it/' 
+//  =============================================================================
 
-// pinkdeck
-let pinkArticle_0 = 'https://www.polimi.it/'
-let pinkArticle_1 = 'https://www.polimi.it/'
-let pinkArticle_2 = 'https://www.polimi.it/'
-let pinkArticle_3 = 'https://www.polimi.it/'
-let pinkArticle_4 = 'https://www.polimi.it/'
-let pinkArticle_5 = 'https://www.polimi.it/'
-let pinkArticle_6 = 'https://www.polimi.it/'
+// Logo animation
 
-// yellowdeck
-let yellowArticle_0 = 'https://www.polimi.it/'
-let yellowArticle_1 = 'https://www.polimi.it/'
-let yellowArticle_2 = 'https://www.polimi.it/'
-let yellowArticle_3 = 'https://www.polimi.it/'
-let yellowArticle_4 = 'https://www.polimi.it/'
-let yellowArticle_5 = 'https://www.polimi.it/'
-let yellowArticle_6 = 'https://www.polimi.it/'
+// keyframes
+var blueLogoKeyframe = 313;
+var greenLogoKeyframe = 32;
+var pinkLogoKeyframe = 90;
+var yellowLogoKeyframe = 248;
+var redLogoKeyframe = 190;
+var blackLogoKeyframe = 136;
 
-// bluedeck
-let blueArticle_0 = 'https://www.polimi.it/'
-let blueArticle_1 = 'https://www.polimi.it/'
-let blueArticle_2 = 'https://www.polimi.it/'
-let blueArticle_3 = 'https://www.polimi.it/'
-let blueArticle_4 = 'https://www.polimi.it/'
-let blueArticle_5 = 'https://www.polimi.it/'
-let blueArticle_6 = 'https://www.polimi.it/'
-
-// reddeck
-let redArticle_0 = 'https://www.polimi.it/'
-let redArticle_1 = 'https://www.polimi.it/'
-let redArticle_2 = 'https://www.polimi.it/'
-let redArticle_3 = 'https://www.polimi.it/'
-let redArticle_4 = 'https://www.polimi.it/'
-let redArticle_5 = 'https://www.polimi.it/'
-let redArticle_6 = 'https://www.polimi.it/'
-
+var logoAnimation = bodymovin.loadAnimation({
+    container: document.getElementById('animatedLogoContainer'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: '../res/logo/logoAnimation.json'
+});
 
 //  =============================================================================
 
@@ -285,10 +258,10 @@ if (/Mobi/.test(navigator.userAgent)) {
             console.log("Current card clicked");
             if (htmlTitle.includes("Home") === true) { // IF HTML TITLE of PAGE is HOME
                 collectCards();
+            } else if ($('meta[name="pageType"]').attr('content') === 'deck') {
+                navigateToArticleMobile();
             }
-        } else {
-            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        }
+        } 
     });
 
     // Collecting cards
@@ -327,6 +300,33 @@ if (/Mobi/.test(navigator.userAgent)) {
         } else if (card_i === 4) {
             window.location.href = "decks/red-deck.html";
         }
+    }
+
+    // Check color of the deck and set the frame animation to the right color
+    var deck_color = $('meta[name="deckColor"]').attr('content');
+    if (deck_color == "pink") {
+        logoAnimation.goToAndStop(greenLogoKeyframe, true);
+    } else if (deck_color == "red") {
+        logoAnimation.goToAndStop(redLogoKeyframe, true);
+    } else if (deck_color == "blue") {
+        logoAnimation.goToAndStop(blueLogoKeyframe, true);
+    } else if (deck_color == "yellow") {
+        logoAnimation.goToAndStop(yellowLogoKeyframe, true);
+    } else if (deck_color == "green") {
+        logoAnimation.goToAndStop(greenLogoKeyframe, true);
+    } else if (deck_color == "black") {
+        logoAnimation.goToAndStop(blackLogoKeyframe, true);
+    }
+    logoAnimation.autoplay = false; // stop the logo animation
+
+    function navigateToArticleMobile() {
+        console.log(loop.current() + " card clicked");
+        let index_of_card = loop.current();
+        console.log("Running navigateToArticleMobile() with card_i = ", index_of_card, " and deck_color = ", deck_color, "...");
+        // generate the URL of the article combining two variables to get the full name of the variable containing the URL
+        let url = 'https://pockettips.it/tips/' + deck_color + '-tip-' + index_of_card;
+        console.log('opening URL:', url);
+        window.open(url, '_self');
     }
 
     if (htmlTitle.includes("Home") === true) { // IF HTML TITLE of PAGE is HOME
@@ -826,7 +826,22 @@ if (/Mobi/.test(navigator.userAgent)) {
     } else if ($('meta[name="pageType"]').attr('content') === 'deck') { // IF deck on desktop
         console.log("Page is a deck")
 
+        // Check color of the deck and set the frame animation to the right color
         var deck_color = $('meta[name="deckColor"]').attr('content');
+        if (deck_color == "pink") {
+            logoAnimation.goToAndStop(greenLogoKeyframe, true);
+        } else if (deck_color == "red") {
+            logoAnimation.goToAndStop(redLogoKeyframe, true);
+        } else if (deck_color == "blue") {
+            logoAnimation.goToAndStop(blueLogoKeyframe, true);
+        } else if (deck_color == "yellow") {
+            logoAnimation.goToAndStop(yellowLogoKeyframe, true);
+        } else if (deck_color == "green") {
+            logoAnimation.goToAndStop(greenLogoKeyframe, true);
+        } else if (deck_color == "black") {
+            logoAnimation.goToAndStop(blackLogoKeyframe, true);
+        }
+        logoAnimation.autoplay = false; // stop the logo animation
 
 
         $('.single-card-wrapper').each(function() {
@@ -1135,6 +1150,11 @@ if (/Mobi/.test(navigator.userAgent)) {
             $('.fullpage-menu').toggleClass('showmenu');
         });
 
+        $('.menu-hamburger').click(function() {
+            console.log('Click on menu hamburger');
+            $('.fullpage-menu').toggleClass('showmenu');
+        });
+
         $('.fullpage-menu').mousemove(function() {
             console.log('Hover on menu');
             if ($(event.target).is('[class*=link]')) {
@@ -1166,9 +1186,9 @@ if (/Mobi/.test(navigator.userAgent)) {
                 
                 
                 // generate the URL of the article combining two variables to get the full name of the variable containing the URL
-                let url = eval(deck_color + "Article_" + index);
+                let url = 'https://pockettips.it/tips/' + deck_color + '-tip-' + index;
                 console.log('opening URL:', url);
-                window.open(url, '_blank')
+                window.open(url, '_self');
 
                 return; // Exit the event handler
             }
@@ -1190,27 +1210,6 @@ if (/Mobi/.test(navigator.userAgent)) {
 
     // FINE DESKTOP
 }
-
-
-
-
-// Logo animation
-
-// keyframes
-var blueLogoKeyframe = 313;
-var greenLogoKeyframe = 32;
-var pinkLogoKeyframe = 90;
-var yellowLogoKeyframe = 248;
-var redLogoKeyframe = 190;
-var whiteLogoKeyframe = 136;
-
-var logoAnimation = bodymovin.loadAnimation({
-    container: document.getElementById('animatedLogoContainer'),
-    renderer: 'svg',
-    loop: true,
-    autoplay: true,
-    path: '../res/logo/logoAnimation.json'
-});
 
 
 
