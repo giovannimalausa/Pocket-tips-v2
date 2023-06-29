@@ -103,6 +103,18 @@ function updateVariablesOnResize() {
 // Initial update of the variables
 updateVariablesOnResize();
 
+
+// =============================================================================
+// Personal websites
+const url0 = 'https://carlottafaranda.altervista.org'; // Carlotta
+const url1 = 'https://instagram.com/alessandro.geranzani'; // Alessandro
+const url2 = 'https://www.behance.net/giadagerman1'; // Giada
+const url3 = 'https://giovannimalausa.com'; // Giovanni
+const url4 = 'https://instagram.com/notfunnymak'; // Chiara
+const url5 = 'https://riccardomoresco.altervista.org/'; // Riccardo
+const url6 = 'https://www.behance.net/paolarapino/'; // Paola
+
+
 // Event listener for window resize
 $(window).resize(updateVariablesOnResize());
 
@@ -258,9 +270,12 @@ if (/Mobi/.test(navigator.userAgent)) {
             console.log("Current card clicked");
             if (htmlTitle.includes("Home") === true) { // IF HTML TITLE of PAGE is HOME
                 collectCards();
+            } else if (htmlTitle.includes("About us") === true) { // IF HTML TITLE of PAGE is ABOUT US
+                navigateToPersonalPageMobile();
+
             } else if ($('meta[name="pageType"]').attr('content') === 'deck') {
                 navigateToArticleMobile();
-            }
+            } 
         } 
     });
 
@@ -322,11 +337,26 @@ if (/Mobi/.test(navigator.userAgent)) {
     function navigateToArticleMobile() {
         console.log(loop.current() + " card clicked");
         let index_of_card = loop.current();
-        console.log("Running navigateToArticleMobile() with card_i = ", index_of_card, " and deck_color = ", deck_color, "...");
+        let correctedIndex = index_of_card + 3;
+        if (correctedIndex > 6) {
+            correctedIndex = correctedIndex - 7;
+        }
+        console.log("Running navigateToArticleMobile() with correctedIndex = ", correctedIndex);
         // generate the URL of the article combining two variables to get the full name of the variable containing the URL
-        let url = 'https://pockettips.it/tips/' + deck_color + '-tip-' + index_of_card;
+        let url = 'https://pockettips.it/tips/' + deck_color + '-tip-' + correctedIndex;
         console.log('opening URL:', url);
         window.open(url, '_self');
+    }
+
+    function navigateToPersonalPageMobile() {
+        let index_of_card = loop.current();
+        let correctedIndex = index_of_card + 3;
+        if (correctedIndex > 6) {
+            correctedIndex = correctedIndex - 7;
+        }
+        console.log("Running navigateToPersonalPageMobile() with correctedIndex = ", correctedIndex);
+        window.open(eval('url' + correctedIndex), '_self');
+
     }
 
     if (htmlTitle.includes("Home") === true) { // IF HTML TITLE of PAGE is HOME
@@ -1149,7 +1179,12 @@ if (/Mobi/.test(navigator.userAgent)) {
 
                 return;
             } else {
+                $('#cat-cursor').addClass('cat-cursor-invisible');
+                $('#cat-cursor').removeClass('open-cursor');
                 $('#cat-cursor').removeClass('cat-cursor-on-button');
+                $('#cat-cursor').removeClass('next-cursor');
+                $('#cat-cursor').removeClass('prev-cursor');
+                $('#arrow').addClass('hide-arrow');
             }    
         }
 
@@ -1204,6 +1239,10 @@ if (/Mobi/.test(navigator.userAgent)) {
             var index = clickableElement.index();
             console.log('Index of the clickable element:', index);
             
+            if (htmlTitle.includes('About us') === true) {
+                window.open(eval('url' + index), '_self');
+                return;
+            }
             
             // generate the URL of the article combining two variables to get the full name of the variable containing the URL
             let url = 'https://pockettips.it/tips/' + deck_color + '-tip-' + index;

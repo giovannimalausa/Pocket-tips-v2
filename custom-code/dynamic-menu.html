@@ -122,23 +122,24 @@
     }
 
     .paragrafo a, .paragrafo a *, .paragrafo a:visited, .paragrafo a:visited * {
-        color: var(--primary-color);
-        text-decoration: none;
+        color: #1F2023;
+        text-decoration: underline;
         font-variation-settings: "wght" 400, "ital" 0, "SRFF" 0;
-        transition: font-variation-settings 0.2s ease-in-out;
+        transition: font-variation-settings 0.2s ease-in-out, color 0.2s ease-in-out;
 
     }
 
     .paragrafo a:hover, .paragrafo a *:hover {
         font-variation-settings: "wght" 600, "ital" 100, "SRFF" 100;
+        color: var(--primary-color);
     }
 
-    .paragrafo a::after, .paragrafo a *::after {
+    /* .paragrafo a::after, .paragrafo a *::after {
         content: '';
         position: absolute;
         left: 0;
-        bottom: -2px; /* Adjust this value as needed */
-        width: 100%; /* Adjust this value as needed */
+        bottom: -2px;
+        width: 100%;
         height: 2px;
         background-color: var(--primary-color);
         transform: scaleX(0);
@@ -147,7 +148,7 @@
 
     .paragrafo a:hover::after, .paragrafo a *:hover::after {
         transform: scaleX(1);
-    }
+    } */
 
 
 

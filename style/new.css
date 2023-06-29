@@ -31,6 +31,7 @@
 
     /* Card variables */
     --card-border-radius-mobile: 24px;
+    --card-border-radius-medium: 30px;
     --card-border-radius: 40px;
 }
 
@@ -62,7 +63,7 @@ body {
     background-color: var(--dark-background);
 }
 
-body.black-deck {
+body.black-deck, .black-deck .barra-in-alto {
     background-color: var(--black-secondary);
     animation: blackDeckBackgroundAnimation 3s forwards;
 
@@ -74,6 +75,20 @@ body.black-deck {
     }
     100% {
         background-color: var(--black-primary);
+    }
+}
+
+body.black-deck #animatedLogoContainer {
+    filter: invert(1);
+    animation: invertLogoAnimation 3s forwards;
+}
+
+@keyframes invertLogoAnimation {
+    60% {
+        filter: invert(1);
+    }
+    100% {
+        filter: invert(0);
     }
 }
 
@@ -155,7 +170,7 @@ body::-webkit-scrollbar { /* Hide scroll bar in Safari, Chrome, Opera */
     z-index: 10;
     background-color: #1F2023;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     transition: top .5s ease-in-out;
 }
 
@@ -288,6 +303,11 @@ a.instagram-link {
     align-items: center;
     overflow: hidden;
     z-index: 1;
+}
+
+.black-deck .wrapper {
+    position: relative;
+    height: 85dvh;
 }
 
 .single-card-wrapper {
@@ -435,6 +455,10 @@ a.instagram-link {
     flex-direction: column;
 }
 
+.black-deck .cat-title-wrapper-in-deck {
+    height: 85dvh;
+}
+
 .cat-title-in-deck {
     position: relative;
     bottom: 220px;
@@ -473,6 +497,29 @@ a.instagram-link {
     color: white;
     font-family: 'PP Fragment Variable';
     font-size: 24px;
+}
+
+.wrapper-testi-about-us {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+    position: relative;
+    left: 5vw;
+    width: 90vw;
+    color: white;
+    font-family: 'PP Fragment Variable';
+}
+
+.wrapper-testi-about-us > * {
+    margin: 0;
+    padding: 0;
+}
+
+.crediti-corso {
+    opacity: .6;
+    margin-bottom: 10vh;
 }
 
 @media screen and (min-width: 700px) and (max-width: 1200px) {
@@ -638,7 +685,7 @@ a.instagram-link {
         font-size: 30px;
     }
 
-    .deck-page {
+    .deck-page, .home-body {
         cursor: none;
         background-color: var(--dark-background);
     }
@@ -684,7 +731,7 @@ a.instagram-link {
         max-height: 375px;
         margin: 0;
         z-index: 10;
-        border-radius: var(--card-border-radius);
+        border-radius: var(--card-border-radius-medium);
     }
 
     .starter {
@@ -903,7 +950,7 @@ a.instagram-link {
         border-radius: 50%;
     }
 
-    .next-cursor .cat-cursor-text, .prev-cursor .cat-cursor-text, .cat-cursor-invisible .cat-cursor-text {
+    .next-cursor .cat-cursor-text, .prev-cursor .cat-cursor-text, .cat-cursor-invisible .cat-cursor-text, .open-cursor .cat-cursor-text {
         opacity: 0;
         width: 0%;
     }
@@ -924,6 +971,35 @@ a.instagram-link {
         opacity: 0;
         width: 0;
     }
+
+    .wrapper-testi-about-us {
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        flex-flow: row-reverse;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 16px;
+        bottom: 2vh;
+        left: 5vw;
+        width: 90vw;
+        color: white;
+        font-family: 'PP Fragment Variable';
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .wrapper-testi-about-us > *{
+        width: 50%;
+    }
+
+    .crediti-corso {
+        /* flex-shrink: 0; */
+        opacity: .6;
+        margin: 0;
+    }
+    
+
 }
 
 @media (min-width: 1450px) {
@@ -960,6 +1036,10 @@ a.instagram-link {
         width: 126px;
         height: 126px;
         object-fit: contain;
+    }
+
+    .face-wrapper {
+        padding: 24px;
     }
 
     .face-wrapper h1 {
